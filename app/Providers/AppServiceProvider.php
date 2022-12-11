@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+// Import application's configurations
+    use App\BusinessLogic\Interfaces\UserInterface;
+    use App\BusinessLogic\Interfaces\UserRoleTypeInterface;
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,6 +18,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Register application's user profile interfaces and services
+        $this->app->bind( UserInterface::class, UserService::class );
+        $this->app->bind( UserRoleTypeInterface::class, UserRoleTypeService::class );
 
         // Register laravel telescope
         if ($this->app->environment('local')) {
