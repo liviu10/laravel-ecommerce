@@ -1,0 +1,14 @@
+id,notify_code,notify_short_description
+1,INFO_00001,The record(s) was(were) successfully fetched from the database!
+2,INFO_00002,The record(s) was (were) successfully inserted in the database!
+3,INFO_00003,The record(s) you have selected was (were) successfully deleted from the database!
+4,INFO_00004,The records were successfully deleted from the database!
+5,INFO_00005,The record(s) you have selected was (were) successfully updated in the database!
+6,INFO_00006,The record(s) you are looking for does not exist in the database!
+7,WAR_00001,The table you are looking for is empty!
+8,WAR_00002,The record(s) you are trying to delete does not exist in the database!
+9,WAR_00003,You do not have sufficient rights to view this resource(s)
+10,ERR_00001,The table you are looking for does not exist in the database!
+11,ERR_00002,One or more column(s) is (are) missing from the table!
+12,ERR_00003,The record(s) already exists in the database!
+13,ERR_00004,The requested API route does not exist!
