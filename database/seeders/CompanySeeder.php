@@ -26,6 +26,7 @@ class CompanySeeder extends Seeder
                 'fiscal_code'                    => 'RO123456',
                 'registration_number'            => 'J40/12/2022',
                 'social_capital'                 => 200.00,
+                'user_id'                        => 1,
                 'created_at'                     => Carbon::now(),
                 'updated_at'                     => Carbon::now(),
             ],

@@ -18,6 +18,7 @@ class CreateCountiesTable extends Migration
             $table->id()->index('idx_id');
             $table->foreignId('country_id')->index('idx_country_id');
             $table->string('name');
+            $table->foreignId('user_id')->index('idx_counties_user_id')->comment('The id of the user who added this record');
             $table->timestamps();
         });
 
@@ -27,7 +28,13 @@ class CreateCountiesTable extends Migration
                 FOREIGN KEY (`country_id`)
                 REFERENCES ' . config('database.connections.mysql.database') . '.`countries` (`id`)
                 ON DELETE CASCADE
-                ON UPDATE CASCADE'
+                ON UPDATE CASCADE;' .
+            'ALTER TABLE ' . config('database.connections.mysql.database') . '.`counties` 
+            ADD CONSTRAINT `fk_counties_user_id`
+                FOREIGN KEY (`user_id`)
+                REFERENCES ' . config('database.connections.mysql.database') . '.`users` (`id`)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE;'
         );
     }
 

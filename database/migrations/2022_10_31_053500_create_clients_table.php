@@ -29,6 +29,7 @@ class CreateClientsTable extends Migration
             $table->string('phone', 20);
             $table->string('email_address')->unique('email_address');
             $table->string('is_active')->default('0');
+            $table->foreignId('user_id')->index('idx_clients_user_id')->comment('The id of the user who added this record');
             $table->timestamps();
         });
 
@@ -56,6 +57,12 @@ class CreateClientsTable extends Migration
                 FOREIGN KEY (`city_id`)
                 REFERENCES ' . config('database.connections.mysql.database') . '.`cities` (`id`)
                 ON DELETE RESTRICT
+                ON UPDATE CASCADE;' .
+            'ALTER TABLE ' . config('database.connections.mysql.database') . '.`clients` 
+            ADD CONSTRAINT `fk_clients_user_id`
+                FOREIGN KEY (`user_id`)
+                REFERENCES ' . config('database.connections.mysql.database') . '.`users` (`id`)
+                ON DELETE CASCADE
                 ON UPDATE CASCADE;'
         );
     }

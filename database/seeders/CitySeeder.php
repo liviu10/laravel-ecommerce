@@ -30,6 +30,7 @@ class CitySeeder extends Seeder
                     'longitude'       => $data['4'],
                     'latitude'        => $data['5'],
                     'google_maps_url' => $data['6'],
+                    'user_id'         => $data['7'],
                 ]);    
             }
             $firstLine = false;

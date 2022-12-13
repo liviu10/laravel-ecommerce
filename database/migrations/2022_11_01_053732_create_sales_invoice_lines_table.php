@@ -29,6 +29,7 @@ class CreateSalesInvoiceLinesTable extends Migration
             $table->decimal('vat_amount_value', 18, 4);
             $table->foreignId('account_id')->index('idx_sales_invoice_line_account_id');
             $table->decimal('unit_net_value', 18, 4);
+            $table->foreignId('user_id')->index('idx_sales_invoice_lines_user_id')->comment('The id of the user who added this record');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -75,6 +76,12 @@ class CreateSalesInvoiceLinesTable extends Migration
                 FOREIGN KEY (`account_id`)
                 REFERENCES ' . config('database.connections.mysql.database') . '.`accounts` (`id`)
                 ON DELETE RESTRICT
+                ON UPDATE CASCADE;' .
+            'ALTER TABLE ' . config('database.connections.mysql.database') . '.`sales_invoice_lines` 
+            ADD CONSTRAINT `fk_sales_invoice_lines_user_id`
+                FOREIGN KEY (`user_id`)
+                REFERENCES ' . config('database.connections.mysql.database') . '.`users` (`id`)
+                ON DELETE CASCADE
                 ON UPDATE CASCADE;'
         );
     }

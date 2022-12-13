@@ -30,6 +30,7 @@ class CompanyDetailsSeeder extends Seeder
                 'bank_account'       => 'RO66BACX0000001234567890',
                 'phone'              => '0760000000',
                 'email_address'      => 'admin@localhost.com',
+                'user_id'            => 1,
                 'created_at'         => Carbon::now(),
                 'updated_at'         => Carbon::now(),
             ],

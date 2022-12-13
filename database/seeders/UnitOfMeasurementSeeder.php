@@ -24,9 +24,10 @@ class UnitOfMeasurementSeeder extends Seeder
         {
             if (!$firstLine) {
                 UnitOfMeasurement::create([
-                    'id'   => $data['0'],
-                    'code' => $data['1'],
-                    'name' => $data['2'],
+                    'id'      => $data['0'],
+                    'code'    => $data['1'],
+                    'name'    => $data['2'],
+                    'user_id' => $data['3'],
                 ]);    
             }
             $firstLine = false;

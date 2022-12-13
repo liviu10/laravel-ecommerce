@@ -25,6 +25,7 @@ class CreateSalesInvoicesTable extends Migration
             $table->decimal('gross_value', 18, 4);
             $table->foreignId('vat_type_id')->index('idx_sales_invoice_vat_type_id');
             $table->decimal('net_value', 18, 4);
+            $table->foreignId('user_id')->index('idx_sales_invoices_user_id')->comment('The id of the user who added this record');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -47,6 +48,12 @@ class CreateSalesInvoicesTable extends Migration
                 FOREIGN KEY (`vat_type_id`)
                 REFERENCES ' . config('database.connections.mysql.database') . '.`vat_types` (`id`)
                 ON DELETE RESTRICT
+                ON UPDATE CASCADE;' .
+            'ALTER TABLE ' . config('database.connections.mysql.database') . '.`sales_invoices` 
+            ADD CONSTRAINT `fk_sales_invoices_user_id`
+                FOREIGN KEY (`user_id`)
+                REFERENCES ' . config('database.connections.mysql.database') . '.`users` (`id`)
+                ON DELETE CASCADE
                 ON UPDATE CASCADE;'
         );
     }

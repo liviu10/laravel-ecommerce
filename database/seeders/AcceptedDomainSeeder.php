@@ -24,9 +24,10 @@ class AcceptedDomainSeeder extends Seeder
         {
             if (!$firstLine) {
                 AcceptedDomain::create([
-                    'id'     => $data['0'],
-                    'domain' => $data['1'],
-                    'type'   => $data['2'],
+                    'id'      => $data['0'],
+                    'domain'  => $data['1'],
+                    'type'    => $data['2'],
+                    'user_id' => $data['3'],
                 ]);    
             }
             $firstLine = false;

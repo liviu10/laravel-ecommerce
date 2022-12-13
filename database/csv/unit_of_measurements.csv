@@ -1,25 +1,25 @@
-id,code,name
-1,BUC,Bucata
-2,KG,Kilogram
-3,L,Litru
-4,M,Metru
-5,GR,Gram
-6,CUT,Cutie
-7,PAC,Pachet
-8,PUN,Punga
-9,SET,Set
-10,MP,Metru patrat
-11,MC,Metru cub
-12,MM,Milimetru
-13,CM,Centimetru
-14,TON,Tona
-15,PER,Pereche
-16,SAC,Sac
-17,ML,Mililitru
-18,KWH,Kilowatt ora
-19,ORA,Ora
-20,MIN,Minut
-21,ZI,Ziua
-22,LUNI,Luni de lucru
-23,DOZ,Doze
-24,SERV,Servicii
+id,code,name,user_id
+1,BUC,Bucata,1
+2,KG,Kilogram,1
+3,L,Litru,1
+4,M,Metru,1
+5,GR,Gram,1
+6,CUT,Cutie,1
+7,PAC,Pachet,1
+8,PUN,Punga,1
+9,SET,Set,1
+10,MP,Metru patrat,1
+11,MC,Metru cub,1
+12,MM,Milimetru,1
+13,CM,Centimetru,1
+14,TON,Tona,1
+15,PER,Pereche,1
+16,SAC,Sac,1
+17,ML,Mililitru,1
+18,KWH,Kilowatt ora,1
+19,ORA,Ora,1
+20,MIN,Minut,1
+21,ZI,Ziua,1
+22,LUNI,Luni de lucru,1
+23,DOZ,Doze,1
+24,SERV,Servicii,1

@@ -27,6 +27,7 @@ class CountySeeder extends Seeder
                     'id'         => $data['0'],
                     'country_id' => $data['1'],
                     'name'       => $data['2'],
+                    'user_id'    => $data['3'],
                 ]);    
             }
             $firstLine = false;

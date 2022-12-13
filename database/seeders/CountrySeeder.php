@@ -24,8 +24,9 @@ class CountrySeeder extends Seeder
         {
             if (!$firstLine) {
                 Country::create([
-                    'id'   => $data['0'],
-                    'name' => $data['1'],
+                    'id'      => $data['0'],
+                    'name'    => $data['1'],
+                    'user_id' => $data['2'],
                 ]);    
             }
             $firstLine = false;

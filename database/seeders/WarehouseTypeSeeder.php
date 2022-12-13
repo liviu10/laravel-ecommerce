@@ -24,6 +24,7 @@ class WarehouseTypeSeeder extends Seeder
                 'code'       => '100',
                 'name'       => 'Marfuri',
                 'type'       => 'Cantitativ valorica',
+                'user_id'    => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

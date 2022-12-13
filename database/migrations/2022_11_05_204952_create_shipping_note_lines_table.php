@@ -25,6 +25,7 @@ class CreateShippingNoteLinesTable extends Migration
             $table->foreignId('vat_type_id')->index('idx_shipping_note_lines_vat_type_id');
             $table->decimal('vat_amount_value', 18, 4);
             $table->decimal('unit_net_value', 18, 4);
+            $table->foreignId('user_id')->index('idx_shipping_note_lines_user_id')->comment('The id of the user who added this record');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -53,6 +54,12 @@ class CreateShippingNoteLinesTable extends Migration
                 FOREIGN KEY (`vat_type_id`)
                 REFERENCES ' . config('database.connections.mysql.database') . '.`vat_types` (`id`)
                 ON DELETE RESTRICT
+                ON UPDATE CASCADE;' . 
+            'ALTER TABLE ' . config('database.connections.mysql.database') . '.`shipping_note_lines` 
+            ADD CONSTRAINT `fk_shipping_note_lines_user_id`
+                FOREIGN KEY (`user_id`)
+                REFERENCES ' . config('database.connections.mysql.database') . '.`users` (`id`)
+                ON DELETE CASCADE
                 ON UPDATE CASCADE;'
         );
     }

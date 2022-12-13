@@ -27,6 +27,7 @@ class ErrorAndNotificationSeeder extends Seeder
                     'id'                       => $data['0'],
                     'notify_code'              => $data['1'],
                     'notify_short_description' => $data['2'],
+                    'user_id'                  => $data['3'],
                 ]);    
             }
             $firstLine = false;

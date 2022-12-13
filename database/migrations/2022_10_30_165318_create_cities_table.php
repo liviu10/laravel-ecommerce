@@ -22,6 +22,7 @@ class CreateCitiesTable extends Migration
             $table->string('longitude');
             $table->string('latitude');
             $table->string('google_maps_url');
+            $table->foreignId('user_id')->index('idx_cities_user_id')->comment('The id of the user who added this record');
             $table->timestamps();
         });
 
@@ -31,7 +32,13 @@ class CreateCitiesTable extends Migration
                 FOREIGN KEY (`county_id`)
                 REFERENCES ' . config('database.connections.mysql.database') . '.`counties` (`id`)
                 ON DELETE CASCADE
-                ON UPDATE CASCADE'
+                ON UPDATE CASCADE;' .
+            'ALTER TABLE ' . config('database.connections.mysql.database') . '.`cities` 
+            ADD CONSTRAINT `fk_cities_user_id`
+                FOREIGN KEY (`user_id`)
+                REFERENCES ' . config('database.connections.mysql.database') . '.`users` (`id`)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE;'
         );
     }
 

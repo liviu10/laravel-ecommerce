@@ -25,6 +25,7 @@ class CreateCompanyDetailsTable extends Migration
             $table->string('bank_account', 32);
             $table->string('phone', 20);
             $table->string('email_address')->unique('email_address');
+            $table->foreignId('user_id')->index('idx_company_details_user_id')->comment('The id of the user who added this record');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -53,6 +54,12 @@ class CreateCompanyDetailsTable extends Migration
                 FOREIGN KEY (`city_id`)
                 REFERENCES ' . config('database.connections.mysql.database') . '.`cities` (`id`)
                 ON DELETE RESTRICT
+                ON UPDATE CASCADE;' .
+            'ALTER TABLE ' . config('database.connections.mysql.database') . '.`company_details` 
+            ADD CONSTRAINT `fk_company_details_user_id`
+                FOREIGN KEY (`user_id`)
+                REFERENCES ' . config('database.connections.mysql.database') . '.`users` (`id`)
+                ON DELETE CASCADE
                 ON UPDATE CASCADE;'
         );
     }

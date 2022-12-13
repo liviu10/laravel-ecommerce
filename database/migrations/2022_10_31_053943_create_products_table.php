@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->decimal('sales_price', 18, 4);
             $table->decimal('sales_price_with_vat', 18, 4);
             $table->string('barcode', 13)->unique('barcode');
+            $table->foreignId('user_id')->index('idx_products_user_id')->comment('The id of the user who added this record');
             $table->timestamps();
         });
 
@@ -45,6 +46,12 @@ class CreateProductsTable extends Migration
                 FOREIGN KEY (`product_type_id`)
                 REFERENCES ' . config('database.connections.mysql.database') . '.`product_types` (`id`)
                 ON DELETE RESTRICT
+                ON UPDATE CASCADE;' .
+            'ALTER TABLE ' . config('database.connections.mysql.database') . '.`products` 
+            ADD CONSTRAINT `fk_products_user_id`
+                FOREIGN KEY (`user_id`)
+                REFERENCES ' . config('database.connections.mysql.database') . '.`users` (`id`)
+                ON DELETE CASCADE
                 ON UPDATE CASCADE;'
         );
     }

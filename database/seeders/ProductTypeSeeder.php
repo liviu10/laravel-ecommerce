@@ -24,8 +24,9 @@ class ProductTypeSeeder extends Seeder
         {
             if (!$firstLine) {
                 ProductType::create([
-                    'id'   => $data['0'],
-                    'name' => $data['1'],
+                    'id'      => $data['0'],
+                    'name'    => $data['1'],
+                    'user_id' => $data['2'],
                 ]);    
             }
             $firstLine = false;

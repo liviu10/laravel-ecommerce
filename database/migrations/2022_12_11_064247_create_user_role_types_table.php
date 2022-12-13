@@ -20,6 +20,7 @@ class CreateUserRoleTypesTable extends Migration
             $table->string('user_role_description');
             $table->string('user_role_slug');
             $table->string('user_role_is_active', 3);
+            $table->foreignId('user_id')->index('idx_user_id')->comment('The id of the user who added this record');
             $table->timestamps();
         });
 
@@ -29,7 +30,7 @@ class CreateUserRoleTypesTable extends Migration
                 FOREIGN KEY (`user_role_type_id`)
                 REFERENCES ' . config('database.connections.mysql.database') . '.`user_role_types` (`id`)
                 ON DELETE CASCADE
-                ON UPDATE CASCADE'
+                ON UPDATE CASCADE;'
         );
     }
 

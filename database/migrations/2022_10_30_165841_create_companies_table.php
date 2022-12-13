@@ -21,6 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->string('fiscal_code', 12)->unique('fiscal_code');
             $table->string('registration_number', 20)->unique('registration_number');
             $table->decimal('social_capital', 18, 4);
+            $table->foreignId('user_id')->index('idx_companies_user_id')->comment('The id of the user who added this record');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,7 +32,13 @@ class CreateCompaniesTable extends Migration
                 FOREIGN KEY (`list_of_economic_activities_id`)
                 REFERENCES ' . config('database.connections.mysql.database') . '.`list_of_economic_activities` (`id`)
                 ON DELETE RESTRICT
-                ON UPDATE CASCADE'
+                ON UPDATE CASCADE;' .
+            'ALTER TABLE ' . config('database.connections.mysql.database') . '.`companies` 
+            ADD CONSTRAINT `fk_companies_user_id`
+                FOREIGN KEY (`user_id`)
+                REFERENCES ' . config('database.connections.mysql.database') . '.`users` (`id`)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE;'
         );
     }
 

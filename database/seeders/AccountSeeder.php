@@ -29,6 +29,7 @@ class AccountSeeder extends Seeder
                     'code'            => $data['2'],
                     'name'            => $data['3'],
                     'is_active'       => $data['4'],
+                    'user_id'         => $data['5'],
                 ]);    
             }
             $firstLine = false;

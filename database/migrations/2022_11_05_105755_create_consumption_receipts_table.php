@@ -25,6 +25,7 @@ class CreateConsumptionReceiptsTable extends Migration
             $table->foreignId('vat_type_id')->index('idx_consumption_receipts_vat_type_id');
             $table->decimal('net_value', 18, 4);
             $table->string('document_explications');
+            $table->foreignId('user_id')->index('idx_consumption_receipts_user_id')->comment('The id of the user who added this record');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -53,6 +54,12 @@ class CreateConsumptionReceiptsTable extends Migration
                 FOREIGN KEY (`vat_type_id`)
                 REFERENCES ' . config('database.connections.mysql.database') . '.`vat_types` (`id`)
                 ON DELETE RESTRICT
+                ON UPDATE CASCADE;' . 
+            'ALTER TABLE ' . config('database.connections.mysql.database') . '.`consumption_receipts` 
+            ADD CONSTRAINT `fk_consumption_receipts_user_id`
+                FOREIGN KEY (`user_id`)
+                REFERENCES ' . config('database.connections.mysql.database') . '.`users` (`id`)
+                ON DELETE CASCADE
                 ON UPDATE CASCADE;'
         );
     }

@@ -18,8 +18,9 @@ class CreateAccountsTable extends Migration
             $table->id()->index('idx_id');
             $table->foreignId('account_type_id')->index('idx_account_type_id');
             $table->string('code', 36)->unique('code');
-            $table->string('name');
+            $table->string('name')->comment('All the available accounts in Romania (clients, suppliers etc).');
             $table->string('is_active')->default('0');
+            $table->foreignId('user_id')->index('idx_accounts_user_id')->comment('The id of the user who added this record');
             $table->timestamps();
         });
 
@@ -29,7 +30,13 @@ class CreateAccountsTable extends Migration
                 FOREIGN KEY (`account_type_id`)
                 REFERENCES ' . config('database.connections.mysql.database') . '.`account_types` (`id`)
                 ON DELETE RESTRICT
-                ON UPDATE CASCADE'
+                ON UPDATE CASCADE;' .
+            'ALTER TABLE ' . config('database.connections.mysql.database') . '.`accounts` 
+            ADD CONSTRAINT `fk_accounts_user_id`
+                FOREIGN KEY (`user_id`)
+                REFERENCES ' . config('database.connections.mysql.database') . '.`users` (`id`)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE;'
         );
     }
 
