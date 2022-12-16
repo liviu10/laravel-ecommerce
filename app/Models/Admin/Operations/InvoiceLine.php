@@ -171,7 +171,7 @@ class InvoiceLine extends Model
      */
     public function invoice()
     {
-        return $this->belongsTo('App\Models\Operations\Invoice');
+        return $this->belongsTo('App\Models\Admin\Operations\Invoice');
     }
 
     /**
@@ -180,7 +180,7 @@ class InvoiceLine extends Model
      */
     public function product_type()
     {
-        return $this->belongsTo('App\Models\Configurations\ProductType');
+        return $this->belongsTo('App\Models\Admin\Configurations\ProductType');
     }
 
     /**
@@ -189,7 +189,7 @@ class InvoiceLine extends Model
      */
     public function warehouse_type()
     {
-        return $this->belongsTo('App\Models\Configurations\WarehouseType');
+        return $this->belongsTo('App\Models\Admin\Configurations\WarehouseType');
     }
 
     /**
@@ -198,7 +198,7 @@ class InvoiceLine extends Model
      */
     public function product()
     {
-        return $this->belongsTo('App\Models\Files\Product');
+        return $this->belongsTo('App\Models\Admin\Files\Product');
     }
 
     /**
@@ -207,7 +207,7 @@ class InvoiceLine extends Model
      */
     public function unit_of_measurement()
     {
-        return $this->belongsTo('App\Models\Configurations\UnitOfMeasurement');
+        return $this->belongsTo('App\Models\Admin\Configurations\UnitOfMeasurement');
     }
 
     /**
@@ -216,7 +216,7 @@ class InvoiceLine extends Model
      */
     public function vat_type()
     {
-        return $this->belongsTo('App\Models\Configurations\VatType');
+        return $this->belongsTo('App\Models\Admin\Configurations\VatType');
     }
 
     /**
@@ -225,7 +225,7 @@ class InvoiceLine extends Model
      */
     public function account()
     {
-        return $this->belongsTo('App\Models\Files\Account');
+        return $this->belongsTo('App\Models\Admin\Files\Account');
     }
 
     /**

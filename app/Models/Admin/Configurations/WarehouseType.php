@@ -61,7 +61,7 @@ class WarehouseType extends Model
      */
     public function invoice_lines()
     {
-        return $this->hasMany('App\Models\Operations\InvoiceLine');
+        return $this->hasMany('App\Models\Admin\Operations\InvoiceLine');
     }
 
     /**
@@ -70,7 +70,7 @@ class WarehouseType extends Model
      */
     public function sales_invoice_lines()
     {
-        return $this->hasMany('App\Models\Operations\SaleInvoiceLine');
+        return $this->hasMany('App\Models\Admin\Operations\SaleInvoiceLine');
     }
 
     /**
@@ -79,7 +79,7 @@ class WarehouseType extends Model
      */
     public function consumption_receipts()
     {
-        return $this->hasMany('App\Models\Operations\ConsumptionReceipt');
+        return $this->hasMany('App\Models\Admin\Operations\ConsumptionReceipt');
     }
 
     /**
@@ -88,7 +88,7 @@ class WarehouseType extends Model
      */
     public function shipping_notes()
     {
-        return $this->hasMany('App\Models\Operations\ShippingNote');
+        return $this->hasMany('App\Models\Admin\Operations\ShippingNote');
     }
 
     /**

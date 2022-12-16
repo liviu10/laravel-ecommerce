@@ -60,7 +60,7 @@ class DocumentType extends Model
      */
     public function invoices()
     {
-        return $this->hasMany('App\Models\Operations\Invoice');
+        return $this->hasMany('App\Models\Admin\Operations\Invoice');
     }
 
     /**
@@ -69,7 +69,7 @@ class DocumentType extends Model
      */
     public function sales_invoices()
     {
-        return $this->hasMany('App\Models\Operations\Invoice');
+        return $this->hasMany('App\Models\Admin\Operations\Invoice');
     }
 
     /**
@@ -78,7 +78,7 @@ class DocumentType extends Model
      */
     public function consumption_receipts()
     {
-        return $this->hasMany('App\Models\Operations\ConsumptionReceipt');
+        return $this->hasMany('App\Models\Admin\Operations\ConsumptionReceipt');
     }
 
     /**
@@ -87,7 +87,7 @@ class DocumentType extends Model
      */
     public function shipping_notes()
     {
-        return $this->hasMany('App\Models\Operations\ShippingNote');
+        return $this->hasMany('App\Models\Admin\Operations\ShippingNote');
     }
 
     /**

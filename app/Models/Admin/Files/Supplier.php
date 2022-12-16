@@ -154,7 +154,7 @@ class Supplier extends Model
      */
     public function account()
     {
-        return $this->belongsTo('App\Models\Files\Account');
+        return $this->belongsTo('App\Models\Admin\Files\Account');
     }
 
     /**
@@ -163,7 +163,7 @@ class Supplier extends Model
      */
     public function country()
     {
-        return $this->belongsTo('App\Models\Configurations\Country');
+        return $this->belongsTo('App\Models\Admin\Configurations\Country');
     }
 
     /**
@@ -172,7 +172,7 @@ class Supplier extends Model
      */
     public function county()
     {
-        return $this->belongsTo('App\Models\Configurations\County');
+        return $this->belongsTo('App\Models\Admin\Configurations\County');
     }
 
     /**
@@ -181,7 +181,7 @@ class Supplier extends Model
      */
     public function city()
     {
-        return $this->belongsTo('App\Models\Configurations\City');
+        return $this->belongsTo('App\Models\Admin\Configurations\City');
     }
 
     /**
@@ -190,7 +190,7 @@ class Supplier extends Model
      */
     public function invoices()
     {
-        return $this->hasMany('App\Models\Operations\Invoice');
+        return $this->hasMany('App\Models\Admin\Operations\Invoice');
     }
 
     /**

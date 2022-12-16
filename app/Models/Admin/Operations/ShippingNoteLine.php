@@ -125,7 +125,7 @@ class ShippingNoteLine extends Model
      */
     public function shipping_note()
     {
-        return $this->belongsTo('App\Models\Operations\ShippingNote');
+        return $this->belongsTo('App\Models\Admin\Operations\ShippingNote');
     }
 
     /**
@@ -134,7 +134,7 @@ class ShippingNoteLine extends Model
      */
     public function product()
     {
-        return $this->belongsTo('App\Models\Files\Product');
+        return $this->belongsTo('App\Models\Admin\Files\Product');
     }
 
     /**
@@ -143,7 +143,7 @@ class ShippingNoteLine extends Model
      */
     public function unit_of_measurement()
     {
-        return $this->belongsTo('App\Models\Configurations\UnitOfMeasurement');
+        return $this->belongsTo('App\Models\Admin\Configurations\UnitOfMeasurement');
     }
 
     /**
@@ -152,7 +152,7 @@ class ShippingNoteLine extends Model
      */
     public function vat_type()
     {
-        return $this->belongsTo('App\Models\Configurations\VatType');
+        return $this->belongsTo('App\Models\Admin\Configurations\VatType');
     }
 
     /**

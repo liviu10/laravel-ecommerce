@@ -59,7 +59,7 @@ class Country extends Model
      */
     public function counties()
     {
-        return $this->hasMany('App\Models\Configurations\County');
+        return $this->hasMany('App\Models\Admin\Configurations\County');
     }
 
     /**
@@ -68,7 +68,7 @@ class Country extends Model
      */
     public function company_details()
     {
-        return $this->hasMany('App\Models\Configurations\CompanyDetails');
+        return $this->hasMany('App\Models\Admin\Configurations\CompanyDetails');
     }
 
     /**
@@ -77,7 +77,7 @@ class Country extends Model
      */
     public function clients()
     {
-        return $this->hasMany('App\Models\Files\Client');
+        return $this->hasMany('App\Models\Admin\Files\Client');
     }
 
     /**
@@ -86,7 +86,7 @@ class Country extends Model
      */
     public function suppliers()
     {
-        return $this->hasMany('App\Models\Files\Supplier');
+        return $this->hasMany('App\Models\Admin\Files\Supplier');
     }
 
     /**

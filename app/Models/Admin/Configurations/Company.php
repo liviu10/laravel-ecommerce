@@ -79,7 +79,7 @@ class Company extends Model
      */
     public function list_of_economic_activities()
     {
-        return $this->belongsTo('App\Models\Configurations\ListOfEconomicActivities');
+        return $this->belongsTo('App\Models\Admin\Configurations\ListOfEconomicActivities');
     }
 
     /**
@@ -88,7 +88,7 @@ class Company extends Model
      */
     public function company_details()
     {
-        return $this->hasMany('App\Models\Configurations\CompanyDetails');
+        return $this->hasMany('App\Models\Admin\Configurations\CompanyDetails');
     }
 
     /**
@@ -97,7 +97,7 @@ class Company extends Model
      */
     public function company_settings()
     {
-        return $this->hasMany('App\Models\Configurations\CompanySettings');
+        return $this->hasMany('App\Models\Admin\Configurations\CompanySettings');
     }
 
     /**

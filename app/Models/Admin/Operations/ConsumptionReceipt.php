@@ -125,7 +125,7 @@ class ConsumptionReceipt extends Model
      */
     public function document_type()
     {
-        return $this->belongsTo('App\Models\Configurations\DocumentType');
+        return $this->belongsTo('App\Models\Admin\Configurations\DocumentType');
     }
 
     /**
@@ -134,7 +134,7 @@ class ConsumptionReceipt extends Model
      */
     public function warehouse_type()
     {
-        return $this->belongsTo('App\Models\Configurations\WarehouseType');
+        return $this->belongsTo('App\Models\Admin\Configurations\WarehouseType');
     }
 
     /**
@@ -143,7 +143,7 @@ class ConsumptionReceipt extends Model
      */
     public function invoice()
     {
-        return $this->belongsTo('App\Models\Operations\Invoice');
+        return $this->belongsTo('App\Models\Admin\Operations\Invoice');
     }
 
     /**
@@ -152,7 +152,7 @@ class ConsumptionReceipt extends Model
      */
     public function vat_type()
     {
-        return $this->belongsTo('App\Models\Configurations\VatType');
+        return $this->belongsTo('App\Models\Admin\Configurations\VatType');
     }
 
     /**
@@ -161,7 +161,7 @@ class ConsumptionReceipt extends Model
      */
     public function consumption_receipt_lines()
     {
-        return $this->hasMany('App\Models\Operations\ConsumptionReceiptLine');
+        return $this->hasMany('App\Models\Admin\Operations\ConsumptionReceiptLine');
     }
 
     /**

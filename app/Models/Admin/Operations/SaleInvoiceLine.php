@@ -171,7 +171,7 @@ class SaleInvoiceLine extends Model
      */
     public function sales_invoice()
     {
-        return $this->belongsTo('App\Models\Operations\SaleInvoice');
+        return $this->belongsTo('App\Models\Admin\Operations\SaleInvoice');
     }
 
     /**
@@ -180,7 +180,7 @@ class SaleInvoiceLine extends Model
      */
     public function product_type()
     {
-        return $this->belongsTo('App\Models\Configurations\ProductType');
+        return $this->belongsTo('App\Models\Admin\Configurations\ProductType');
     }
 
     /**
@@ -189,7 +189,7 @@ class SaleInvoiceLine extends Model
      */
     public function warehouse_type()
     {
-        return $this->belongsTo('App\Models\Configurations\WarehouseType');
+        return $this->belongsTo('App\Models\Admin\Configurations\WarehouseType');
     }
 
     /**
@@ -198,7 +198,7 @@ class SaleInvoiceLine extends Model
      */
     public function product()
     {
-        return $this->belongsTo('App\Models\Files\Product');
+        return $this->belongsTo('App\Models\Admin\Files\Product');
     }
 
     /**
@@ -207,7 +207,7 @@ class SaleInvoiceLine extends Model
      */
     public function unit_of_measurement()
     {
-        return $this->belongsTo('App\Models\Configurations\UnitOfMeasurement');
+        return $this->belongsTo('App\Models\Admin\Configurations\UnitOfMeasurement');
     }
 
     /**
@@ -216,7 +216,7 @@ class SaleInvoiceLine extends Model
      */
     public function vat_type()
     {
-        return $this->belongsTo('App\Models\Configurations\VatType');
+        return $this->belongsTo('App\Models\Admin\Configurations\VatType');
     }
 
     /**
@@ -225,7 +225,7 @@ class SaleInvoiceLine extends Model
      */
     public function account()
     {
-        return $this->belongsTo('App\Models\Files\Account');
+        return $this->belongsTo('App\Models\Admin\Files\Account');
     }
 
     /**
@@ -234,7 +234,7 @@ class SaleInvoiceLine extends Model
      */
     public function shipping_notes()
     {
-        return $this->belongsTo('App\Models\Operations\ShippingNote');
+        return $this->belongsTo('App\Models\Admin\Operations\ShippingNote');
     }
 
     /**

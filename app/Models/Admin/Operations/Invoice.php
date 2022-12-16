@@ -138,7 +138,7 @@ class Invoice extends Model
      */
     public function document_type()
     {
-        return $this->belongsTo('App\Models\Configurations\DocumentType');
+        return $this->belongsTo('App\Models\Admin\Configurations\DocumentType');
     }
 
     /**
@@ -147,7 +147,7 @@ class Invoice extends Model
      */
     public function supplier()
     {
-        return $this->belongsTo('App\Models\Files\Supplier');
+        return $this->belongsTo('App\Models\Admin\Files\Supplier');
     }
 
     /**
@@ -156,7 +156,7 @@ class Invoice extends Model
      */
     public function vat_type()
     {
-        return $this->belongsTo('App\Models\Configurations\VatType');
+        return $this->belongsTo('App\Models\Admin\Configurations\VatType');
     }
 
     /**
@@ -165,7 +165,7 @@ class Invoice extends Model
      */
     public function invoice_lines()
     {
-        return $this->hasMany('App\Models\Operations\InvoiceLine');
+        return $this->hasMany('App\Models\Admin\Operations\InvoiceLine');
     }
 
     /**

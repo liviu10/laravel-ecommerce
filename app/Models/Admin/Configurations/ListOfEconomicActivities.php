@@ -69,7 +69,7 @@ class ListOfEconomicActivities extends Model
      */
     public function companies()
     {
-        return $this->hasMany('App\Models\Configurations\Company');
+        return $this->hasMany('App\Models\Admin\Configurations\Company');
     }
 
     /**

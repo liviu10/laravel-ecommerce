@@ -125,7 +125,7 @@ class CompanyDetails extends Model
      */
     public function company()
     {
-        return $this->belongsTo('App\Models\Configurations\Company');
+        return $this->belongsTo('App\Models\Admin\Configurations\Company');
     }
 
     /**
@@ -134,7 +134,7 @@ class CompanyDetails extends Model
      */
     public function country()
     {
-        return $this->belongsTo('App\Models\Configurations\Country');
+        return $this->belongsTo('App\Models\Admin\Configurations\Country');
     }
 
     /**
@@ -143,7 +143,7 @@ class CompanyDetails extends Model
      */
     public function county()
     {
-        return $this->belongsTo('App\Models\Configurations\County');
+        return $this->belongsTo('App\Models\Admin\Configurations\County');
     }
 
     /**
@@ -152,7 +152,7 @@ class CompanyDetails extends Model
      */
     public function city()
     {
-        return $this->belongsTo('App\Models\Configurations\City');
+        return $this->belongsTo('App\Models\Admin\Configurations\City');
     }
 
     /**

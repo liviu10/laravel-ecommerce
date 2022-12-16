@@ -60,7 +60,7 @@ class AccountType extends Model
      */
     public function accounts()
     {
-        return $this->hasMany('App\Models\Files\Account');
+        return $this->hasMany('App\Models\Admin\Files\Account');
     }
 
     /**

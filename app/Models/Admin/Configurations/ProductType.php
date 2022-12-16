@@ -59,7 +59,7 @@ class ProductType extends Model
      */
     public function products()
     {
-        return $this->hasMany('App\Models\Files\Product');
+        return $this->hasMany('App\Models\Admin\Files\Product');
     }
 
     /**
@@ -68,7 +68,7 @@ class ProductType extends Model
      */
     public function invoice_lines()
     {
-        return $this->hasMany('App\Models\Operations\InvoiceLine');
+        return $this->hasMany('App\Models\Admin\Operations\InvoiceLine');
     }
 
     /**
@@ -77,7 +77,7 @@ class ProductType extends Model
      */
     public function sales_invoice_lines()
     {
-        return $this->hasMany('App\Models\Operations\SaleInvoiceLine');
+        return $this->hasMany('App\Models\Admin\Operations\SaleInvoiceLine');
     }
 
     /**

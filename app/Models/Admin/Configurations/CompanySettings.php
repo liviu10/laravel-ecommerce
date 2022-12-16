@@ -75,7 +75,7 @@ class CompanySettings extends Model
      */
     public function company()
     {
-        return $this->belongsTo('App\Models\Configurations\Company');
+        return $this->belongsTo('App\Models\Admin\Configurations\Company');
     }
 
     /**

@@ -73,7 +73,7 @@ class County extends Model
      */
     public function country()
     {
-        return $this->belongsTo('App\Models\Configurations\Country');
+        return $this->belongsTo('App\Models\Admin\Configurations\Country');
     }
 
     /**
@@ -82,7 +82,7 @@ class County extends Model
      */
     public function cities()
     {
-        return $this->hasMany('App\Models\Configurations\City');
+        return $this->hasMany('App\Models\Admin\Configurations\City');
     }
 
     /**
@@ -91,7 +91,7 @@ class County extends Model
      */
     public function company_details()
     {
-        return $this->hasMany('App\Models\Configurations\CompanyDetails');
+        return $this->hasMany('App\Models\Admin\Configurations\CompanyDetails');
     }
 
     /**
@@ -100,7 +100,7 @@ class County extends Model
      */
     public function clients()
     {
-        return $this->hasMany('App\Models\Files\Client');
+        return $this->hasMany('App\Models\Admin\Files\Client');
     }
 
     /**
@@ -109,7 +109,7 @@ class County extends Model
      */
     public function suppliers()
     {
-        return $this->hasMany('App\Models\Files\Supplier');
+        return $this->hasMany('App\Models\Admin\Files\Supplier');
     }
 
     /**

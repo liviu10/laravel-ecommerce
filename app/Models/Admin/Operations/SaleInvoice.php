@@ -138,7 +138,7 @@ class SaleInvoice extends Model
      */
     public function document_type()
     {
-        return $this->belongsTo('App\Models\Configurations\DocumentType');
+        return $this->belongsTo('App\Models\Admin\Configurations\DocumentType');
     }
 
     /**
@@ -147,7 +147,7 @@ class SaleInvoice extends Model
      */
     public function client()
     {
-        return $this->belongsTo('App\Models\Files\Client');
+        return $this->belongsTo('App\Models\Admin\Files\Client');
     }
 
     /**
@@ -156,7 +156,7 @@ class SaleInvoice extends Model
      */
     public function vat_type()
     {
-        return $this->belongsTo('App\Models\Configurations\VatType');
+        return $this->belongsTo('App\Models\Admin\Configurations\VatType');
     }
 
     /**
@@ -165,7 +165,7 @@ class SaleInvoice extends Model
      */
     public function sales_invoice_lines()
     {
-        return $this->hasMany('App\Models\Operations\SaleInvoiceLine');
+        return $this->hasMany('App\Models\Admin\Operations\SaleInvoiceLine');
     }
 
     /**
@@ -174,7 +174,7 @@ class SaleInvoice extends Model
      */
     public function shipping_notes()
     {
-        return $this->hasMany('App\Models\Operations\ShippingNote');
+        return $this->hasMany('App\Models\Admin\Operations\ShippingNote');
     }
 
     /**

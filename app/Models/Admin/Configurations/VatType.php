@@ -61,7 +61,7 @@ class VatType extends Model
      */
     public function products()
     {
-        return $this->hasMany('App\Models\Files\Product');
+        return $this->hasMany('App\Models\Admin\Files\Product');
     }
 
     /**
@@ -70,7 +70,7 @@ class VatType extends Model
      */
     public function invoices()
     {
-        return $this->hasMany('App\Models\Operations\Invoice');
+        return $this->hasMany('App\Models\Admin\Operations\Invoice');
     }
 
     /**
@@ -79,7 +79,7 @@ class VatType extends Model
      */
     public function invoice_lines()
     {
-        return $this->hasMany('App\Models\Operations\InvoiceLine');
+        return $this->hasMany('App\Models\Admin\Operations\InvoiceLine');
     }
 
     /**
@@ -88,7 +88,7 @@ class VatType extends Model
      */
     public function sales_invoices()
     {
-        return $this->hasMany('App\Models\Operations\SaleInvoice');
+        return $this->hasMany('App\Models\Admin\Operations\SaleInvoice');
     }
 
     /**
@@ -97,7 +97,7 @@ class VatType extends Model
      */
     public function sales_invoice_lines()
     {
-        return $this->hasMany('App\Models\Operations\SaleInvoiceLine');
+        return $this->hasMany('App\Models\Admin\Operations\SaleInvoiceLine');
     }
 
     /**
@@ -106,7 +106,7 @@ class VatType extends Model
      */
     public function consumption_receipts()
     {
-        return $this->hasMany('App\Models\Operations\ConsumptionReceipt');
+        return $this->hasMany('App\Models\Admin\Operations\ConsumptionReceipt');
     }
 
     /**
@@ -115,7 +115,7 @@ class VatType extends Model
      */
     public function shipping_notes()
     {
-        return $this->hasMany('App\Models\Operations\ShippingNote');
+        return $this->hasMany('App\Models\Admin\Operations\ShippingNote');
     }
 
     /**

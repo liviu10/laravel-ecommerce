@@ -108,7 +108,7 @@ class Product extends Model
      */
     public function unit_of_measurement()
     {
-        return $this->belongsTo('App\Models\Configurations\UnitOfMeasurement');
+        return $this->belongsTo('App\Models\Admin\Configurations\UnitOfMeasurement');
     }
 
     /**
@@ -117,7 +117,7 @@ class Product extends Model
      */
     public function vat_type()
     {
-        return $this->belongsTo('App\Models\Configurations\VatType');
+        return $this->belongsTo('App\Models\Admin\Configurations\VatType');
     }
 
     /**
@@ -126,7 +126,7 @@ class Product extends Model
      */
     public function product_type()
     {
-        return $this->belongsTo('App\Models\Configurations\ProductType');
+        return $this->belongsTo('App\Models\Admin\Configurations\ProductType');
     }
 
     /**
@@ -135,7 +135,7 @@ class Product extends Model
      */
     public function invoice_lines()
     {
-        return $this->hasMany('App\Models\Operations\InvoiceLine');
+        return $this->hasMany('App\Models\Admin\Operations\InvoiceLine');
     }
 
     /**
@@ -144,7 +144,7 @@ class Product extends Model
      */
     public function sales_invoice_lines()
     {
-        return $this->hasMany('App\Models\Operations\SaleInvoiceLine');
+        return $this->hasMany('App\Models\Admin\Operations\SaleInvoiceLine');
     }
 
     /**

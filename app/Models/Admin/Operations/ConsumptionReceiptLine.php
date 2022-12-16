@@ -125,7 +125,7 @@ class ConsumptionReceiptLine extends Model
      */
     public function consumption_receipt()
     {
-        return $this->belongsTo('App\Models\Operations\ComputedReceipt');
+        return $this->belongsTo('App\Models\Admin\Operations\ComputedReceipt');
     }
 
     /**
@@ -134,7 +134,7 @@ class ConsumptionReceiptLine extends Model
      */
     public function product()
     {
-        return $this->belongsTo('App\Models\Files\Product');
+        return $this->belongsTo('App\Models\Admin\Files\Product');
     }
 
     /**
@@ -143,7 +143,7 @@ class ConsumptionReceiptLine extends Model
      */
     public function unit_of_measurement()
     {
-        return $this->belongsTo('App\Models\Configurations\UnitOfMeasurement');
+        return $this->belongsTo('App\Models\Admin\Configurations\UnitOfMeasurement');
     }
 
     /**
@@ -152,7 +152,7 @@ class ConsumptionReceiptLine extends Model
      */
     public function vat_type()
     {
-        return $this->belongsTo('App\Models\Configurations\VatType');
+        return $this->belongsTo('App\Models\Admin\Configurations\VatType');
     }
 
     /**
