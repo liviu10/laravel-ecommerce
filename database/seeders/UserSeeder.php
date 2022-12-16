@@ -27,6 +27,8 @@ class UserSeeder extends Seeder
                 'email_verified_at' => Carbon::now(),
                 'user_role_type_id' => '1',
                 'password'          => bcrypt('123@UserWebmaster'),
+                'created_at'        => Carbon::now(),
+                'updated_at'        => Carbon::now(),
             ],
             [
                 'id'                => '2',
@@ -36,6 +38,8 @@ class UserSeeder extends Seeder
                 'email_verified_at' => Carbon::now(),
                 'user_role_type_id' => '2',
                 'password'          => bcrypt('123@UserAdministrator'),
+                'created_at'        => Carbon::now(),
+                'updated_at'        => Carbon::now(),
             ],
             [
                 'id'                => '3',
@@ -45,6 +49,8 @@ class UserSeeder extends Seeder
                 'email_verified_at' => Carbon::now(),
                 'user_role_type_id' => '3',
                 'password'          => bcrypt('123@UserAccountant'),
+                'created_at'        => Carbon::now(),
+                'updated_at'        => Carbon::now(),
             ],
             [
                 'id'                => '4',
@@ -54,6 +60,8 @@ class UserSeeder extends Seeder
                 'email_verified_at' => Carbon::now(),
                 'user_role_type_id' => '4',
                 'password'          => bcrypt('123@UserSales'),
+                'created_at'        => Carbon::now(),
+                'updated_at'        => Carbon::now(),
             ],
             [
                 'id'                => '5',
@@ -63,6 +71,8 @@ class UserSeeder extends Seeder
                 'email_verified_at' => Carbon::now(),
                 'user_role_type_id' => '5',
                 'password'          => bcrypt('123@UserClient'),
+                'created_at'        => Carbon::now(),
+                'updated_at'        => Carbon::now(),
             ]
         ];
         User::insert($records);
