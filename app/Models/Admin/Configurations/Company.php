@@ -58,6 +58,7 @@ class Company extends Model
         'fiscal_code',
         'registration_number',
         'social_capital',
+        'user_id'
     ];
 
     /**
@@ -100,6 +101,15 @@ class Company extends Model
     }
 
     /**
+     * Eloquent relationship between companies and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
+
+    /**
      * SQL query to fetch all records.
      * @return  Collection|Bool
      */
@@ -115,6 +125,9 @@ class Company extends Model
                         ->with([
                             'list_of_economic_activities' => function ($query) {
                                 $query->select('id', 'code', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->withTrashed()
@@ -173,7 +186,8 @@ class Company extends Model
                                     'id', 'company_id', 'country_id',
                                     'county_id', 'city_id', 'address',
                                     'bank_name', 'bank_account', 'phone',
-                                    'email_address', 'created_at', 'updated_at'
+                                    'email_address', 'created_at', 'updated_at',
+                                    'user_id'
                                 )->with([
                                     'country' => function ($query) {
                                         $query->select('id', 'name');
@@ -183,11 +197,21 @@ class Company extends Model
                                     },
                                     'city' => function ($query) {
                                         $query->select('id', 'name');
+                                    },
+                                    'user' => function ($query) {
+                                        $query->select('id', 'name', 'nickname');
                                     }
                                 ]);
                             },
                             'company_settings' => function ($query) {
-                                $query->select('id', 'company_id', 'name');
+                                $query->select('id', 'company_id', 'name', 'user_id')->with([
+                                    'user' => function ($query) {
+                                        $query->select('id', 'name', 'nickname');
+                                    }
+                                ]);
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->get();
@@ -278,12 +302,15 @@ class Company extends Model
             return $this->select(
                             'id', 'list_of_economic_activities_id',
                             'name', 'fiscal_code', 'registration_number',
-                            'social_capital'
+                            'social_capital', 'user_id'
                         )
                         ->orderBy($payload['column_name'], $payload['order_type'])
                         ->with([
                             'list_of_economic_activities' => function ($query) {
                                 $query->select('id', 'code', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->withTrashed()
@@ -308,12 +335,15 @@ class Company extends Model
             return $this->select(
                             'id', 'list_of_economic_activities_id',
                             'name', 'fiscal_code', 'registration_number',
-                            'social_capital'
+                            'social_capital', 'user_id'
                         )
                         ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')
                         ->with([
                             'list_of_economic_activities' => function ($query) {
                                 $query->select('id', 'code', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->withTrashed()

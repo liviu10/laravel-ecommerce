@@ -40,6 +40,7 @@ class DocumentType extends Model
     protected $fillable = [
         'code',
         'name',
+        'user_id'
     ];
 
     /**
@@ -87,6 +88,15 @@ class DocumentType extends Model
     public function shipping_notes()
     {
         return $this->hasMany('App\Models\Operations\ShippingNote');
+    }
+
+    /**
+     * Eloquent relationship between document types and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
     }
 
     /**
@@ -138,7 +148,14 @@ class DocumentType extends Model
     {
         try
         {
-            return $this->select('*')->where('id', '=', $id)->get();
+            return $this->select('*')
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
+                        ->where('id', '=', $id)
+                        ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {

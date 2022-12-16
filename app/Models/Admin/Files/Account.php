@@ -56,6 +56,7 @@ class Account extends Model
         'code',
         'name',
         'is_active',
+        'user_id'
     ];
 
     /**
@@ -142,6 +143,15 @@ class Account extends Model
     }
 
     /**
+     * Eloquent relationship between accounts and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
+
+    /**
      * SQL query to fetch all records.
      * @return  Collection|Bool
      */
@@ -151,11 +161,14 @@ class Account extends Model
         {
             return $this->select(
                             'id', 'account_type_id', 'code',
-                            'name', 'is_active'
+                            'name', 'is_active', 'user_id'
                         )
                         ->with([
                             'account_type' => function ($query) {
                                 $query->select('id', 'code', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->get();
@@ -206,6 +219,9 @@ class Account extends Model
                         ->with([
                             'account_type' => function ($query) {
                                 $query->select('id', 'code', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->get();
@@ -254,9 +270,17 @@ class Account extends Model
         {
             return $this->select(
                             'id', 'account_type_id', 'code',
-                            'name', 'is_active'
+                            'name', 'is_active', 'user_id'
                         )
                         ->orderBy($payload['column_name'], $payload['order_type'])
+                        ->with([
+                            'account_type' => function ($query) {
+                                $query->select('id', 'code', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
                         ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
@@ -279,27 +303,51 @@ class Account extends Model
             {
                 return $this->select(
                                 'id', 'account_type_id', 'code',
-                                'name', 'is_active'
+                                'name', 'is_active', 'user_id'
                             )
                             ->where($payload['column_name'], 'LIKE', $payload['filter_value'])
+                            ->with([
+                                'account_type' => function ($query) {
+                                    $query->select('id', 'code', 'name');
+                                },
+                                'user' => function ($query) {
+                                    $query->select('id', 'name', 'nickname');
+                                }
+                            ])
                             ->get();
             }
             elseif ($payload['column_name'] === 'name')
             {
                 return $this->select(
                                 'id', 'account_type_id', 'code',
-                                'name', 'is_active'
+                                'name', 'is_active', 'user_id'
                             )
                             ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')
+                            ->with([
+                                'account_type' => function ($query) {
+                                    $query->select('id', 'code', 'name');
+                                },
+                                'user' => function ($query) {
+                                    $query->select('id', 'name', 'nickname');
+                                }
+                            ])
                             ->get();
             }
             else
             {
                 return $this->select(
                                 'id', 'account_type_id', 'code',
-                                'name', 'is_active'
+                                'name', 'is_active', 'user_id'
                             )
                             ->where($payload['column_name'], 'LIKE', $payload['filter_value'])
+                            ->with([
+                                'account_type' => function ($query) {
+                                    $query->select('id', 'code', 'name');
+                                },
+                                'user' => function ($query) {
+                                    $query->select('id', 'name', 'nickname');
+                                }
+                            ])
                             ->get();
             }
         }

@@ -54,6 +54,7 @@ class CompanySettings extends Model
     protected $fillable = [
         'company_id',
         'name',
+        'user_id'
     ];
 
     /**
@@ -75,6 +76,15 @@ class CompanySettings extends Model
     public function company()
     {
         return $this->belongsTo('App\Models\Configurations\Company');
+    }
+
+    /**
+     * Eloquent relationship between company settings and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
     }
 
     /**
@@ -107,7 +117,15 @@ class CompanySettings extends Model
      */
     public function fetchSingleRecord($id): Collection
     {
-        return $this->select('*')->withTrashed()->where('id', '=', $id)->get();
+        return $this->select('*')
+                    ->with([
+                        'user' => function ($query) {
+                            $query->select('id', 'name', 'nickname');
+                        }
+                    ])
+                    ->withTrashed()
+                    ->where('id', '=', $id)
+                    ->get();
     }
 
     /**

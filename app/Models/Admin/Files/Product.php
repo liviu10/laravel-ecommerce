@@ -88,6 +88,7 @@ class Product extends Model
         'sales_price',
         'sales_price_with_vat',
         'barcode',
+        'user_id'
     ];
 
     /**
@@ -147,6 +148,15 @@ class Product extends Model
     }
 
     /**
+     * Eloquent relationship between products and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
+
+    /**
      * SQL query to fetch all records.
      * @return  Collection|Bool
      */
@@ -154,7 +164,13 @@ class Product extends Model
     {
         try
         {
-            return $this->select('id', 'code', 'name')->get();
+            return $this->select('id', 'code', 'name', 'user_id')
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
+                        ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {
@@ -212,6 +228,9 @@ class Product extends Model
                             },
                             'product_type' => function ($query) {
                                 $query->select('id', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->get();
@@ -262,7 +281,12 @@ class Product extends Model
     {
         try
         {
-            return $this->select('id', 'code', 'name')
+            return $this->select('id', 'code', 'name', 'user_id')
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
                         ->orderBy($payload['column_name'], $payload['order_type'])
                         ->get();
         }
@@ -284,13 +308,23 @@ class Product extends Model
         {
             if ($payload['column_name'] === 'code')
             {
-                return $this->select('id', 'code', 'name')
+                return $this->select('id', 'code', 'name', 'user_id')
+                            ->with([
+                                'user' => function ($query) {
+                                    $query->select('id', 'name', 'nickname');
+                                }
+                            ])
                             ->where($payload['column_name'], 'LIKE', $payload['filter_value'])
                             ->get();
             }
             elseif ($payload['column_name'] === 'name')
             {
-                return $this->select('id', 'code', 'name')
+                return $this->select('id', 'code', 'name', 'user_id')
+                            ->with([
+                                'user' => function ($query) {
+                                    $query->select('id', 'name', 'nickname');
+                                }
+                            ])
                             ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')
                             ->get();
             }

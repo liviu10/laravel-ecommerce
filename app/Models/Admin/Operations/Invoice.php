@@ -90,6 +90,7 @@ class Invoice extends Model
         'gross_value',
         'vat_type_id',
         'net_value',
+        'user_id'
     ];
 
     /**
@@ -177,6 +178,15 @@ class Invoice extends Model
     }
 
     /**
+     * Eloquent relationship between invoices and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
+
+    /**
      * SQL query to fetch all records.
      * @return  Collection|Bool
      */
@@ -188,7 +198,7 @@ class Invoice extends Model
                             'id', 'document_type_id', 'document_number',
                             'supplier_id', 'vat_on_cash_received',
                             'document_date', 'document_due_date',
-                            'gross_value', 'vat_type_id', 'net_value',
+                            'gross_value', 'vat_type_id', 'net_value', 'user_id'
                         )
                         ->with([
                             'document_type' => function ($query) {
@@ -199,6 +209,9 @@ class Invoice extends Model
                             },
                             'vat_type' => function ($query) {
                                 $query->select('id', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->get();
@@ -251,7 +264,7 @@ class Invoice extends Model
                         'id', 'document_type_id', 'document_number',
                         'supplier_id', 'vat_on_cash_received',
                         'document_date', 'document_due_date',
-                        'gross_value', 'vat_type_id', 'net_value',
+                        'gross_value', 'vat_type_id', 'net_value', 'user_id'
                     )
                     ->with([
                         'document_type' => function ($query) {
@@ -270,7 +283,7 @@ class Invoice extends Model
                                         'name', 'unit_of_measurement_id',
                                         'vat_type_id', 'quantity', 'unit_gross_value',
                                         'discount', 'vat_amount_value',
-                                        'account_id', 'unit_net_value'
+                                        'account_id', 'unit_net_value', 'user_id'
                                     )->with([
                                         'product_type' => function ($query) {
                                             $query->select('id', 'name');
@@ -290,6 +303,9 @@ class Invoice extends Model
                                                     $query->select('id', 'code', 'name');
                                                 }
                                             ]);
+                                        },
+                                        'user' => function ($query) {
+                                            $query->select('id', 'name', 'nickname');
                                         }
                                     ]);
                         },
@@ -297,13 +313,19 @@ class Invoice extends Model
                             $query->select(
                                         'id', 'document_number', 'document_date',
                                         'warehouse_type_id', 'invoice_id', 'gross_value',
-                                        'vat_type_id', 'net_value'
+                                        'vat_type_id', 'net_value', 'user_id'
                                     )->with([
                                         'warehouse_type' => function ($query) {
                                             $query->select('id', 'code', 'name', 'type');
+                                        },
+                                        'user' => function ($query) {
+                                            $query->select('id', 'name', 'nickname');
                                         }
                                     ]);
                         },
+                        'user' => function ($query) {
+                            $query->select('id', 'name', 'nickname');
+                        }
                     ])
                     ->get();
     }
@@ -392,7 +414,7 @@ class Invoice extends Model
                             'id', 'document_type_id', 'document_number',
                             'supplier_id', 'vat_on_cash_received',
                             'document_date', 'document_due_date',
-                            'gross_value', 'vat_type_id', 'net_value',
+                            'gross_value', 'vat_type_id', 'net_value', 'user_id'
                         )
                         ->with([
                             'document_type' => function ($query) {
@@ -403,6 +425,9 @@ class Invoice extends Model
                             },
                             'vat_type' => function ($query) {
                                 $query->select('id', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->orderBy($payload['column_name'], $payload['order_type'])
@@ -428,7 +453,7 @@ class Invoice extends Model
                             'id', 'document_type_id', 'document_number',
                             'supplier_id', 'vat_on_cash_received',
                             'document_date', 'document_due_date',
-                            'gross_value', 'vat_type_id', 'net_value',
+                            'gross_value', 'vat_type_id', 'net_value', 'user_id'
                         )
                         ->with([
                             'document_type' => function ($query) {
@@ -439,6 +464,9 @@ class Invoice extends Model
                             },
                             'vat_type' => function ($query) {
                                 $query->select('id', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')

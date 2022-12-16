@@ -104,6 +104,7 @@ class CompanyDetails extends Model
         'bank_account',
         'phone',
         'email_address',
+        'user_id'
     ];
 
     /**
@@ -155,6 +156,15 @@ class CompanyDetails extends Model
     }
 
     /**
+     * Eloquent relationship between company details and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
+
+    /**
      * SQL query to save a single record in the database.
      * @param  array  $payload
      * @return  Bool
@@ -191,7 +201,15 @@ class CompanyDetails extends Model
      */
     public function fetchSingleRecord($id): Collection
     {
-        return $this->select('*')->withTrashed()->where('id', '=', $id)->get();
+        return $this->select('*')
+                    ->with([
+                        'user' => function ($query) {
+                            $query->select('id', 'name', 'nickname');
+                        }
+                    ])
+                    ->withTrashed()
+                    ->where('id', '=', $id)
+                    ->get();
     }
 
     /**

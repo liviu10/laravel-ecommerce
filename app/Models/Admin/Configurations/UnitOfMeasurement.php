@@ -40,6 +40,7 @@ class UnitOfMeasurement extends Model
     protected $fillable = [
         'code',
         'name',
+        'user_id'
     ];
 
     /**
@@ -78,6 +79,15 @@ class UnitOfMeasurement extends Model
     public function sales_invoice_lines()
     {
         return $this->hasMany('App\Models\Operations\SaleInvoiceLine');
+    }
+
+    /**
+     * Eloquent relationship between unit of measurement and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
     }
 
     /**
@@ -129,7 +139,14 @@ class UnitOfMeasurement extends Model
     {
         try
         {
-            return $this->select('*')->where('id', '=', $id)->get();
+            return $this->select('*')
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
+                        ->where('id', '=', $id)
+                        ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {

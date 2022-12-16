@@ -41,6 +41,7 @@ class AcceptedDomain extends Model
     protected $fillable = [
         'domain',
         'type',
+        'user_id'
     ];
 
     /**
@@ -54,6 +55,15 @@ class AcceptedDomain extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    /**
+     * Eloquent relationship between accepted domains and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
 
     /**
      * SQL query to fetch all records.
@@ -104,7 +114,15 @@ class AcceptedDomain extends Model
     {
         try
         {
-            return $this->select('*')->withTrashed()->where('id', '=', $id)->get();
+            return $this->select('*')
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
+                        ->withTrashed()
+                        ->where('id', '=', $id)
+                        ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {

@@ -39,6 +39,7 @@ class Country extends Model
      */
     protected $fillable = [
         'name',
+        'user_id'
     ];
 
     /**
@@ -86,6 +87,15 @@ class Country extends Model
     public function suppliers()
     {
         return $this->hasMany('App\Models\Files\Supplier');
+    }
+
+    /**
+     * Eloquent relationship between countries and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
     }
 
     /**

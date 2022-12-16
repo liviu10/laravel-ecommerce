@@ -107,6 +107,7 @@ class Client extends Model
         'phone',
         'email_address',
         'is_active',
+        'user_id'
     ];
 
     /**
@@ -193,6 +194,15 @@ class Client extends Model
     }
 
     /**
+     * Eloquent relationship between clients and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
+
+    /**
      * SQL query to fetch all records.
      * @return  Collection|Bool
      */
@@ -202,8 +212,13 @@ class Client extends Model
         {
             return $this->select(
                             'id', 'name', 'fiscal_code',
-                            'registration_number', 'is_active'
+                            'registration_number', 'is_active', 'user_id'
                         )
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
                         ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
@@ -270,6 +285,9 @@ class Client extends Model
                             },
                             'city' => function ($query) {
                                 $query->select('id', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->get();
@@ -327,23 +345,11 @@ class Client extends Model
         {
             return $this->select(
                             'id', 'name', 'fiscal_code',
-                            'registration_number', 'account_id',
-                            'country_id', 'county_id', 'city_id',
-                            'address', 'bank_name', 'bank_account',
-                            'phone', 'email_address', 'is_active'
+                            'registration_number', 'is_active', 'user_id'
                         )
                         ->with([
-                            'account' => function ($query) {
-                                $query->select('id', 'code');
-                            },
-                            'country' => function ($query) {
-                                $query->select('id', 'name');
-                            },
-                            'county' => function ($query) {
-                                $query->select('id', 'name');
-                            },
-                            'city' => function ($query) {
-                                $query->select('id', 'name');
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->orderBy($payload['column_name'], $payload['order_type'])
@@ -369,23 +375,11 @@ class Client extends Model
             {
                 return $this->select(
                                 'id', 'name', 'fiscal_code',
-                                'registration_number', 'account_id',
-                                'country_id', 'county_id', 'city_id',
-                                'address', 'bank_name', 'bank_account',
-                                'phone', 'email_address', 'is_active'
+                                'registration_number', 'is_active', 'user_id'
                             )
                             ->with([
-                                'account' => function ($query) {
-                                    $query->select('id', 'code');
-                                },
-                                'country' => function ($query) {
-                                    $query->select('id', 'name');
-                                },
-                                'county' => function ($query) {
-                                    $query->select('id', 'name');
-                                },
-                                'city' => function ($query) {
-                                    $query->select('id', 'name');
+                                'user' => function ($query) {
+                                    $query->select('id', 'name', 'nickname');
                                 }
                             ])
                             ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')
@@ -395,23 +389,11 @@ class Client extends Model
             {
                 return $this->select(
                                 'id', 'name', 'fiscal_code',
-                                'registration_number', 'account_id',
-                                'country_id', 'county_id', 'city_id',
-                                'address', 'bank_name', 'bank_account',
-                                'phone', 'email_address', 'is_active'
+                                'registration_number', 'is_active', 'user_id'
                             )
                             ->with([
-                                'account' => function ($query) {
-                                    $query->select('id', 'code');
-                                },
-                                'country' => function ($query) {
-                                    $query->select('id', 'name');
-                                },
-                                'county' => function ($query) {
-                                    $query->select('id', 'name');
-                                },
-                                'city' => function ($query) {
-                                    $query->select('id', 'name');
+                                'user' => function ($query) {
+                                    $query->select('id', 'name', 'nickname');
                                 }
                             ])
                             ->where($payload['column_name'], 'LIKE', $payload['filter_value'])

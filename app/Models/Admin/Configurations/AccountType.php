@@ -40,6 +40,7 @@ class AccountType extends Model
     protected $fillable = [
         'code',
         'name',
+        'user_id'
     ];
 
     /**
@@ -60,6 +61,15 @@ class AccountType extends Model
     public function accounts()
     {
         return $this->hasMany('App\Models\Files\Account');
+    }
+
+    /**
+     * Eloquent relationship between account types and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
     }
 
     /**

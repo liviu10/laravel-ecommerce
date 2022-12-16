@@ -56,7 +56,8 @@ class City extends Model
         'name',
         'longitude',
         'latitude',
-        'google_maps_url'
+        'google_maps_url',
+        'user_id'
     ];
 
     /**
@@ -103,6 +104,15 @@ class City extends Model
     public function suppliers()
     {
         return $this->hasMany('App\Models\Files\Supplier');
+    }
+
+    /**
+     * Eloquent relationship between cities and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
     }
 
     /**
@@ -158,7 +168,14 @@ class City extends Model
     {
         try
         {
-            return $this->select('*')->where('id', '=', $id)->get();
+            return $this->select('*')
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
+                        ->where('id', '=', $id)
+                        ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {

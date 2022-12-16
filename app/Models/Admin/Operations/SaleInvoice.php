@@ -90,6 +90,7 @@ class SaleInvoice extends Model
         'gross_value',
         'vat_type_id',
         'net_value',
+        'user_id'
     ];
 
     /**
@@ -177,6 +178,15 @@ class SaleInvoice extends Model
     }
 
     /**
+     * Eloquent relationship between sales invoices and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
+
+    /**
      * SQL query to fetch all records.
      * @return  Collection|Bool
      */
@@ -188,7 +198,7 @@ class SaleInvoice extends Model
                             'id', 'document_type_id', 'document_number',
                             'client_id', 'electronic_invoice',
                             'document_date', 'document_due_date',
-                            'gross_value', 'vat_type_id', 'net_value',
+                            'gross_value', 'vat_type_id', 'net_value', 'user_id'
                         )
                         ->with([
                             'document_type' => function ($query) {
@@ -199,6 +209,9 @@ class SaleInvoice extends Model
                             },
                             'vat_type' => function ($query) {
                                 $query->select('id', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->get();
@@ -251,7 +264,7 @@ class SaleInvoice extends Model
                         'id', 'document_type_id', 'document_number',
                         'client_id', 'electronic_invoice',
                         'document_date', 'document_due_date',
-                        'gross_value', 'vat_type_id', 'net_value',
+                        'gross_value', 'vat_type_id', 'net_value', 'user_id'
                     )
                     ->with([
                         'document_type' => function ($query) {
@@ -270,7 +283,7 @@ class SaleInvoice extends Model
                                         'name', 'unit_of_measurement_id',
                                         'vat_type_id', 'quantity', 'unit_gross_value',
                                         'discount', 'vat_amount_value',
-                                        'account_id', 'unit_net_value'
+                                        'account_id', 'unit_net_value', 'user_id'
                                     )->with([
                                         'product_type' => function ($query) {
                                             $query->select('id', 'name');
@@ -290,9 +303,15 @@ class SaleInvoice extends Model
                                                     $query->select('id', 'code', 'name');
                                                 }
                                             ]);
+                                        },
+                                        'user' => function ($query) {
+                                            $query->select('id', 'name', 'nickname');
                                         }
                                     ]);
                         },
+                        'user' => function ($query) {
+                            $query->select('id', 'name', 'nickname');
+                        }
                     ])
                     ->get();
     }
@@ -381,7 +400,7 @@ class SaleInvoice extends Model
                             'id', 'document_type_id', 'document_number',
                             'client_id', 'electronic_invoice',
                             'document_date', 'document_due_date',
-                            'gross_value', 'vat_type_id', 'net_value',
+                            'gross_value', 'vat_type_id', 'net_value', 'user_id'
                         )
                         ->with([
                             'document_type' => function ($query) {
@@ -392,6 +411,9 @@ class SaleInvoice extends Model
                             },
                             'vat_type' => function ($query) {
                                 $query->select('id', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->orderBy($payload['column_name'], $payload['order_type'])
@@ -417,7 +439,7 @@ class SaleInvoice extends Model
                             'id', 'document_type_id', 'document_number',
                             'client_id', 'electronic_invoice',
                             'document_date', 'document_due_date',
-                            'gross_value', 'vat_type_id', 'net_value',
+                            'gross_value', 'vat_type_id', 'net_value', 'user_id'
                         )
                         ->with([
                             'document_type' => function ($query) {
@@ -428,6 +450,9 @@ class SaleInvoice extends Model
                             },
                             'vat_type' => function ($query) {
                                 $query->select('id', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')

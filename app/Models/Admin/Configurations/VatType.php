@@ -41,6 +41,7 @@ class VatType extends Model
         'code',
         'name',
         'value',
+        'user_id'
     ];
 
     /**
@@ -118,6 +119,15 @@ class VatType extends Model
     }
 
     /**
+     * Eloquent relationship between vat types and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
+
+    /**
      * SQL query to fetch all records.
      * @return  Collection|Bool
      */
@@ -167,7 +177,14 @@ class VatType extends Model
     {
         try
         {
-            return $this->select('*')->where('id', '=', $id)->get();
+            return $this->select('*')
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
+                        ->where('id', '=', $id)
+                        ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {

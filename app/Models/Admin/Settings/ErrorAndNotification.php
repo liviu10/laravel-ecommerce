@@ -39,7 +39,8 @@ class ErrorAndNotification extends Model
      */
     protected $fillable = [
         'notify_code',
-        'notify_short_description'
+        'notify_short_description',
+        'user_id'
     ];
 
     /**
@@ -52,6 +53,15 @@ class ErrorAndNotification extends Model
         'created_at',
         'updated_at'
     ];
+
+    /**
+     * Eloquent relationship between error and notifications and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
 
     /**
      * SQL query to fetch all records.
@@ -102,7 +112,14 @@ class ErrorAndNotification extends Model
     {
         try
         {
-            return $this->all()->where('id', '=', $id);
+            return $this->select('*')
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
+                        ->where('id', '=', $id)
+                        ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {

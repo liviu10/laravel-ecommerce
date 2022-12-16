@@ -54,6 +54,7 @@ class County extends Model
     protected $fillable = [
         'country_id',
         'name',
+        'user_id'
     ];
 
     /**
@@ -109,6 +110,15 @@ class County extends Model
     public function suppliers()
     {
         return $this->hasMany('App\Models\Files\Supplier');
+    }
+
+    /**
+     * Eloquent relationship between counties and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
     }
 
     /**

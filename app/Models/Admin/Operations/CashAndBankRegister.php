@@ -44,7 +44,8 @@ class CashAndBankRegister extends Model
         'sum_received',
         'sum_payed',
         'is_cash_register',
-        'is_bank_register'
+        'is_bank_register',
+        'user_id'
     ];
 
     /**
@@ -87,6 +88,15 @@ class CashAndBankRegister extends Model
     }
 
     /**
+     * Eloquent relationship between cash and bank register and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
+
+    /**
      * SQL query to fetch all records.
      * @return  Collection|Bool
      */
@@ -97,8 +107,14 @@ class CashAndBankRegister extends Model
             return $this->select(
                             'id', 'document_date', 'document_number',
                             'document_note', 'sum_received', 'sum_payed',
-                            'is_cash_register', 'is_bank_register'
-                        )->get();
+                            'is_cash_register', 'is_bank_register', 'user_id'
+                        )
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
+                        ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {
@@ -176,8 +192,13 @@ class CashAndBankRegister extends Model
             return $this->select(
                             'id', 'document_date', 'document_number',
                             'document_note', 'sum_received', 'sum_payed',
-                            'is_cash_register', 'is_bank_register'
+                            'is_cash_register', 'is_bank_register', 'user_id'
                         )
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
                         ->orderBy($payload['column_name'], $payload['order_type'])
                         ->get();
         }
@@ -200,8 +221,13 @@ class CashAndBankRegister extends Model
             return $this->select(
                             'id', 'document_date', 'document_number',
                             'document_note', 'sum_received', 'sum_payed',
-                            'is_cash_register', 'is_bank_register'
+                            'is_cash_register', 'is_bank_register', 'user_id'
                         )
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
                         ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')
                         ->get();
         }

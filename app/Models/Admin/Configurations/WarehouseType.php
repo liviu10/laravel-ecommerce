@@ -41,6 +41,7 @@ class WarehouseType extends Model
         'code',
         'name',
         'type',
+        'user_id'
     ];
 
     /**
@@ -88,6 +89,15 @@ class WarehouseType extends Model
     public function shipping_notes()
     {
         return $this->hasMany('App\Models\Operations\ShippingNote');
+    }
+
+    /**
+     * Eloquent relationship between warehouse types and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
     }
 
     /**
@@ -140,7 +150,14 @@ class WarehouseType extends Model
     {
         try
         {
-            return $this->select('*')->where('id', '=', $id)->get();
+            return $this->select('*')
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
+                        ->where('id', '=', $id)
+                        ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {

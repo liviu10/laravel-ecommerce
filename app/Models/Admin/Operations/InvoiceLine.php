@@ -149,7 +149,8 @@ class InvoiceLine extends Model
         'discount',
         'vat_amount_value',
         'account_id',
-        'unit_net_value'
+        'unit_net_value',
+        'user_id'
     ];
 
     /**
@@ -228,6 +229,15 @@ class InvoiceLine extends Model
     }
 
     /**
+     * Eloquent relationship between invoice lines and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
+
+    /**
      * SQL query to save a single record in the database.
      * @param  array  $payload
      * @return  Bool
@@ -268,7 +278,15 @@ class InvoiceLine extends Model
      */
     public function fetchSingleRecord($id): Collection
     {
-        return $this->select('*')->withTrashed()->where('id', '=', $id)->get();
+        return $this->select('*')
+                    ->with([
+                        'user' => function ($query) {
+                            $query->select('id', 'name', 'nickname');
+                        }
+                    ])
+                    ->withTrashed()
+                    ->where('id', '=', $id)
+                    ->get();
     }
 
     /**

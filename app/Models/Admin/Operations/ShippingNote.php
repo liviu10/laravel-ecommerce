@@ -103,7 +103,8 @@ class ShippingNote extends Model
         'gross_value',
         'vat_type_id',
         'net_value',
-        'document_explications'
+        'document_explications',
+        'user_id'
     ];
 
     /**
@@ -164,6 +165,15 @@ class ShippingNote extends Model
     }
 
     /**
+     * Eloquent relationship between shipping notes and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
+
+    /**
      * SQL query to fetch all records.
      * @return  Collection|Bool
      */
@@ -175,7 +185,7 @@ class ShippingNote extends Model
                             'id', 'document_type_id', 'document_number',
                             'document_date', 'warehouse_type_id',
                             'sales_invoice_id', 'gross_value', 'vat_type_id',
-                            'net_value', 'document_explications'
+                            'net_value', 'document_explications', 'user_id'
                         )
                         ->with([
                             'document_type' => function ($query) {
@@ -189,6 +199,9 @@ class ShippingNote extends Model
                             },
                             'vat_type' => function ($query) {
                                 $query->select('id', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->get();
@@ -211,7 +224,7 @@ class ShippingNote extends Model
                         'id', 'document_type_id', 'document_number',
                         'document_date', 'warehouse_type_id',
                         'sales_invoice_id', 'gross_value', 'vat_type_id',
-                        'net_value', 'document_explications'
+                        'net_value', 'document_explications', 'user_id'
                     )
                     ->with([
                         'document_type' => function ($query) {
@@ -243,7 +256,7 @@ class ShippingNote extends Model
                                                         'name', 'unit_of_measurement_id',
                                                         'vat_type_id', 'quantity', 'unit_gross_value',
                                                         'discount', 'vat_amount_value',
-                                                        'account_id', 'unit_net_value'
+                                                        'account_id', 'unit_net_value', 'user_id'
                                                     )->with([
                                                         'product_type' => function ($query) {
                                                             $query->select('id', 'name');
@@ -263,6 +276,9 @@ class ShippingNote extends Model
                                                                     $query->select('id', 'code', 'name');
                                                                 }
                                                             ]);
+                                                        },
+                                                        'user' => function ($query) {
+                                                            $query->select('id', 'name', 'nickname');
                                                         }
                                                     ]);
                                         },
@@ -270,6 +286,9 @@ class ShippingNote extends Model
                         },
                         'vat_type' => function ($query) {
                             $query->select('id', 'name');
+                        },
+                        'user' => function ($query) {
+                            $query->select('id', 'name', 'nickname');
                         }
                     ])
                     ->get();
@@ -389,7 +408,7 @@ class ShippingNote extends Model
                             'id', 'document_type_id', 'document_number',
                             'document_date', 'warehouse_type_id',
                             'sales_invoice_id', 'gross_value', 'vat_type_id',
-                            'net_value', 'document_explications'
+                            'net_value', 'document_explications', 'user_id'
                         )
                         ->with([
                             'document_type' => function ($query) {
@@ -403,6 +422,9 @@ class ShippingNote extends Model
                             },
                             'vat_type' => function ($query) {
                                 $query->select('id', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->orderBy($payload['column_name'], $payload['order_type'])
@@ -428,7 +450,7 @@ class ShippingNote extends Model
                             'id', 'document_type_id', 'document_number',
                             'document_date', 'warehouse_type_id',
                             'sales_invoice_id', 'gross_value', 'vat_type_id',
-                            'net_value', 'document_explications'
+                            'net_value', 'document_explications', 'user_id'
                         )
                         ->with([
                             'document_type' => function ($query) {
@@ -442,6 +464,9 @@ class ShippingNote extends Model
                             },
                             'vat_type' => function ($query) {
                                 $query->select('id', 'name');
+                            },
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
                             }
                         ])
                         ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')

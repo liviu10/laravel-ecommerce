@@ -40,6 +40,7 @@ class ListOfEconomicActivities extends Model
     protected $fillable = [
         'code',
         'name',
+        'user_id'
     ];
 
     /**
@@ -52,6 +53,15 @@ class ListOfEconomicActivities extends Model
         'created_at',
         'updated_at'
     ];
+
+    /**
+     * Eloquent relationship between list of economic activities and users.
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Admin\Settings\User');
+    }
 
     /**
      * Eloquent relationship between list_of_economic_activities and companies.
@@ -111,7 +121,14 @@ class ListOfEconomicActivities extends Model
     {
         try
         {
-            return $this->select('*')->where('id', '=', $id)->get();
+            return $this->select('*')
+                        ->with([
+                            'user' => function ($query) {
+                                $query->select('id', 'name', 'nickname');
+                            }
+                        ])
+                        ->where('id', '=', $id)
+                        ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {
