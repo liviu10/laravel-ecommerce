@@ -50,6 +50,12 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\Admin\Settings\UserController;
     use App\Http\Controllers\Admin\Settings\UserRoleTypeController;
 
+    // Import application's contact and newsletter
+    use App\Http\Controllers\Admin\Connect\ContactMeController;
+    use App\Http\Controllers\Admin\Connect\ContactMeResponseController;
+    use App\Http\Controllers\Admin\Connect\NewsletterCampaignController;
+    use App\Http\Controllers\Admin\Connect\NewsletterSubscriberController;
+
 
 Route::group([ 'prefix' => config('app.version') ], function () {
     // Application's admin api endpoints
@@ -234,6 +240,40 @@ Route::group([ 'prefix' => config('app.version') ], function () {
                 Route::get('/filter', [UserRoleTypeController::class, 'filterTableColumn']);
             });
             Route::apiResource('/user-role-types', UserRoleTypeController::class)->only('index');
+        });
+
+        // Application's contact and newsletter
+        Route::group([ 'prefix' => '/connect' ], function () {
+            // Contact
+            Route::group([ 'prefix' => '/contact-me' ], function () {
+                Route::get('/restore/{id}', [ContactMeController::class, 'restoreRecord']);
+                Route::get('/order', [ContactMeController::class, 'orderTableColumn']);
+                Route::get('/filter', [ContactMeController::class, 'filterTableColumn']);
+            });
+            Route::apiResource('/contact-me', ContactMeController::class);
+            // Contact me response
+            Route::group([ 'prefix' => '/contact-me-responses' ], function () {
+                Route::get('/restore/{id}', [ContactMeResponseController::class, 'restoreRecord']);
+                Route::get('/order', [ContactMeResponseController::class, 'orderTableColumn']);
+                Route::get('/filter', [ContactMeResponseController::class, 'filterTableColumn']);
+            });
+            Route::apiResource('/contact-me-responses', ContactMeResponseController::class);
+            // Newsletter campaigns
+            Route::group([ 'prefix' => '/newsletter-campaigns' ], function () {
+                Route::get('/restore/{id}', [NewsletterCampaignController::class, 'restoreRecord']);
+                Route::get('/order', [NewsletterCampaignController::class, 'orderTableColumn']);
+                Route::get('/filter', [NewsletterCampaignController::class, 'filterTableColumn']);
+            });
+            Route::apiResource('/newsletter-campaigns', NewsletterCampaignController::class);
+            // Newsletter subscribers
+            Route::group([ 'prefix' => '/newsletter-subscribers' ], function () {
+                Route::get('/restore/{id}', [NewsletterSubscriberController::class, 'restoreRecord']);
+                Route::get('/order', [NewsletterSubscriberController::class, 'orderTableColumn']);
+                Route::get('/filter', [NewsletterSubscriberController::class, 'filterTableColumn']);
+                Route::delete('/unsubscribe', [NewsletterSubscriberController::class, 'unsubscribeUser']);
+                Route::get('/unsubscribe/restore', [NewsletterSubscriberController::class, 'restoreSubscription']);
+            });
+            Route::apiResource('/newsletter-subscribers', NewsletterSubscriberController::class);
         });
     });
 

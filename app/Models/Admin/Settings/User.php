@@ -90,7 +90,7 @@ class User extends Authenticatable
      */
     public function accepted_domains()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Settings\AcceptedDomain');
+        return $this->hasMany('App\Models\Admin\Settings\AcceptedDomain');
     }
 
     /**
@@ -99,7 +99,7 @@ class User extends Authenticatable
      */
     public function errors_and_notifications()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Settings\ErrorAndNotification');
+        return $this->hasMany('App\Models\Admin\Settings\ErrorAndNotification');
     }
 
     /**
@@ -108,7 +108,7 @@ class User extends Authenticatable
      */
     public function account_types()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\AccountType');
+        return $this->hasMany('App\Models\Admin\Configurations\AccountType');
     }
 
     /**
@@ -117,7 +117,7 @@ class User extends Authenticatable
      */
     public function cities()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\City');
+        return $this->hasMany('App\Models\Admin\Configurations\City');
     }
 
     /**
@@ -126,7 +126,7 @@ class User extends Authenticatable
      */
     public function companies()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\Company');
+        return $this->hasMany('App\Models\Admin\Configurations\Company');
     }
 
     /**
@@ -135,7 +135,7 @@ class User extends Authenticatable
      */
     public function company_details()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\CompanyDetails');
+        return $this->hasMany('App\Models\Admin\Configurations\CompanyDetails');
     }
 
     /**
@@ -144,7 +144,7 @@ class User extends Authenticatable
      */
     public function company_settings()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\CompanySettings');
+        return $this->hasMany('App\Models\Admin\Configurations\CompanySettings');
     }
 
     /**
@@ -153,7 +153,7 @@ class User extends Authenticatable
      */
     public function countries()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\Country');
+        return $this->hasMany('App\Models\Admin\Configurations\Country');
     }
 
     /**
@@ -162,7 +162,7 @@ class User extends Authenticatable
      */
     public function counties()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\County');
+        return $this->hasMany('App\Models\Admin\Configurations\County');
     }
 
     /**
@@ -171,7 +171,7 @@ class User extends Authenticatable
      */
     public function document_types()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\DocumentType');
+        return $this->hasMany('App\Models\Admin\Configurations\DocumentType');
     }
 
     /**
@@ -180,7 +180,7 @@ class User extends Authenticatable
      */
     public function list_of_economic_activities()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\ListOfEconomicActivities');
+        return $this->hasMany('App\Models\Admin\Configurations\ListOfEconomicActivities');
     }
 
     /**
@@ -189,7 +189,7 @@ class User extends Authenticatable
      */
     public function product_types()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\ProductType');
+        return $this->hasMany('App\Models\Admin\Configurations\ProductType');
     }
 
     /**
@@ -198,7 +198,7 @@ class User extends Authenticatable
      */
     public function unit_of_measurements()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\UnitOfMeasurement');
+        return $this->hasMany('App\Models\Admin\Configurations\UnitOfMeasurement');
     }
 
     /**
@@ -207,7 +207,7 @@ class User extends Authenticatable
      */
     public function vat_types()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\VatType');
+        return $this->hasMany('App\Models\Admin\Configurations\VatType');
     }
 
     /**
@@ -216,7 +216,7 @@ class User extends Authenticatable
      */
     public function warehouse_types()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Configurations\WarehouseType');
+        return $this->hasMany('App\Models\Admin\Configurations\WarehouseType');
     }
 
     /**
@@ -225,7 +225,7 @@ class User extends Authenticatable
      */
     public function accounts()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Files\Account');
+        return $this->hasMany('App\Models\Admin\Files\Account');
     }
 
     /**
@@ -234,7 +234,7 @@ class User extends Authenticatable
      */
     public function clients()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Files\Client');
+        return $this->hasMany('App\Models\Admin\Files\Client');
     }
 
     /**
@@ -243,7 +243,7 @@ class User extends Authenticatable
      */
     public function products()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Files\Product');
+        return $this->hasMany('App\Models\Admin\Files\Product');
     }
 
     /**
@@ -252,7 +252,7 @@ class User extends Authenticatable
      */
     public function suppliers()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Files\Supplier');
+        return $this->hasMany('App\Models\Admin\Files\Supplier');
     }
 
     /**
@@ -261,7 +261,7 @@ class User extends Authenticatable
      */
     public function cash_and_bank_register()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Operations\CashAndBankRegister');
+        return $this->hasMany('App\Models\Admin\Operations\CashAndBankRegister');
     }
 
     /**
@@ -270,7 +270,7 @@ class User extends Authenticatable
      */
     public function consumption_receipts()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Operations\ConsumptionReceipt');
+        return $this->hasMany('App\Models\Admin\Operations\ConsumptionReceipt');
     }
 
     /**
@@ -279,7 +279,7 @@ class User extends Authenticatable
      */
     public function consumption_receipt_lines()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Operations\ConsumptionReceiptLine');
+        return $this->hasMany('App\Models\Admin\Operations\ConsumptionReceiptLine');
     }
 
     /**
@@ -288,7 +288,7 @@ class User extends Authenticatable
      */
     public function invoices()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Operations\Invoice');
+        return $this->hasMany('App\Models\Admin\Operations\Invoice');
     }
 
     /**
@@ -297,7 +297,7 @@ class User extends Authenticatable
      */
     public function invoice_lines()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Operations\InvoiceLine');
+        return $this->hasMany('App\Models\Admin\Operations\InvoiceLine');
     }
 
     /**
@@ -306,7 +306,7 @@ class User extends Authenticatable
      */
     public function sales_invoices()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Operations\SaleInvoice');
+        return $this->hasMany('App\Models\Admin\Operations\SaleInvoice');
     }
 
     /**
@@ -315,7 +315,7 @@ class User extends Authenticatable
      */
     public function sales_invoice_lines()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Operations\SaleInvoiceLine');
+        return $this->hasMany('App\Models\Admin\Operations\SaleInvoiceLine');
     }
 
     /**
@@ -324,7 +324,7 @@ class User extends Authenticatable
      */
     public function shipping_notes()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Operations\ShippingNote');
+        return $this->hasMany('App\Models\Admin\Operations\ShippingNote');
     }
 
     /**
@@ -333,7 +333,25 @@ class User extends Authenticatable
      */
     public function shipping_note_lines()
     {
-        return $this->hasMany('App\Models\Admin\Admin\Operations\ShippingNoteLine');
+        return $this->hasMany('App\Models\Admin\Operations\ShippingNoteLine');
+    }
+
+    /**
+     * Eloquent relationship between users and contact responses.
+     *
+     */
+    public function contact_responses()
+    {
+        return $this->hasMany('App\Models\Admin\Connect\ContactMeResponse');
+    }
+
+    /**
+     * Eloquent relationship between users and newsletter campaign.
+     *
+     */
+    public function subscriber_campaigns()
+    {
+        return $this->hasMany('App\Models\Admin\Connect\NewsletterCampaign');
     }
 
     /**

@@ -116,7 +116,7 @@ class ConsumptionReceiptLine extends Model
         'id',
         'created_at',
         'updated_at',
-        'delete_at'
+        'deleted_at'
     ];
 
     /**

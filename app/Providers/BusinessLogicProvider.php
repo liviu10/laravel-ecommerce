@@ -64,6 +64,16 @@ use Illuminate\Support\ServiceProvider;
     use App\BusinessLogic\Interfaces\Admin\Settings\UserRoleTypeInterface;
     use App\BusinessLogic\Services\Admin\Settings\UserRoleTypeService;
 
+// Import application's contact
+    use App\BusinessLogic\Interfaces\Admin\Connect\ContactMeInterface;
+    use App\BusinessLogic\Services\Admin\Connect\ContactMeService;
+    use App\BusinessLogic\Interfaces\Admin\Connect\ContactMeResponseInterface;
+    use App\BusinessLogic\Services\Admin\Connect\ContactMeResponseService;
+    use App\BusinessLogic\Interfaces\Admin\Connect\NewsletterCampaignInterface;
+    use App\BusinessLogic\Services\Admin\Connect\NewsletterCampaignService;
+    use App\BusinessLogic\Interfaces\Admin\Connect\NewsletterSubscriberInterface;
+    use App\BusinessLogic\Services\Admin\Connect\NewsletterSubscriberService;
+
 
 class BusinessLogicProvider extends ServiceProvider
 {
@@ -107,6 +117,12 @@ class BusinessLogicProvider extends ServiceProvider
         $this->app->bind( ErrorAndNotificationInterface::class, ErrorAndNotificationService::class );
         $this->app->bind( UserInterface::class, UserService::class );
         $this->app->bind( UserRoleTypeInterface::class, UserRoleTypeService::class );
+
+        // Register application's contact and newsletter interfaces and services
+        $this->app->bind( ContactMeInterface::class, ContactMeService::class );
+        $this->app->bind( ContactMeResponseInterface::class, ContactMeResponseService::class );
+        $this->app->bind( NewsletterCampaignInterface::class, NewsletterCampaignService::class );
+        $this->app->bind( NewsletterSubscriberInterface::class, NewsletterSubscriberService::class );
     }
 
     /**

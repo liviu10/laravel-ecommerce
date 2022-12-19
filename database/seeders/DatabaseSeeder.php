@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             DocumentTypeSeeder::class,
             ErrorAndNotificationSeeder::class,
             ListOfEconomicActivitiesSeeder::class,
+            NewsletterCampaignSeeder::class,
             ProductTypeSeeder::class,
             UnitOfMeasurementSeeder::class,
             UserRoleTypeSeeder::class,
