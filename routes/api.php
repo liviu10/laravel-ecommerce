@@ -250,7 +250,7 @@ Route::group([ 'prefix' => config('app.version') ], function () {
                 Route::get('/order', [ContactMeController::class, 'orderTableColumn']);
                 Route::get('/filter', [ContactMeController::class, 'filterTableColumn']);
             });
-            Route::apiResource('/contact-me', ContactMeController::class);
+            Route::apiResource('/contact-me', ContactMeController::class); // TODO: move the create method to client routes
             // Contact me response
             Route::group([ 'prefix' => '/contact-me-responses' ], function () {
                 Route::get('/restore/{id}', [ContactMeResponseController::class, 'restoreRecord']);
@@ -270,8 +270,8 @@ Route::group([ 'prefix' => config('app.version') ], function () {
                 Route::get('/restore/{id}', [NewsletterSubscriberController::class, 'restoreRecord']);
                 Route::get('/order', [NewsletterSubscriberController::class, 'orderTableColumn']);
                 Route::get('/filter', [NewsletterSubscriberController::class, 'filterTableColumn']);
-                Route::delete('/unsubscribe', [NewsletterSubscriberController::class, 'unsubscribeUser']);
-                Route::get('/unsubscribe/restore', [NewsletterSubscriberController::class, 'restoreSubscription']);
+                Route::delete('/unsubscribe', [NewsletterSubscriberController::class, 'unsubscribeUser']); // TODO: move unsubscribeMethod method to client routes
+                Route::get('/unsubscribe/restore', [NewsletterSubscriberController::class, 'restoreSubscription']); // TODO: move restoreSubscription method to client routes
             });
             Route::apiResource('/newsletter-subscribers', NewsletterSubscriberController::class);
         });
