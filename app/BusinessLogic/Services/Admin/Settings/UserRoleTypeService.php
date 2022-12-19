@@ -51,4 +51,64 @@ class UserRoleTypeService implements UserRoleTypeInterface
             return response($this->handleResponse('error_message'), 500);
         }
     }
+
+    /**
+     * Order all the records from the database.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function handleOrderTableColumn($request)
+    {
+        $orderTableColumnPayload = [
+            'column_name' => $request->get('column_name'),
+            'order_type'  => $request->get('order_type')
+        ];
+        $apiOrderAllRecords = $this->modelName->orderTableColumn($orderTableColumnPayload);
+
+        if ($apiOrderAllRecords instanceof Collection)
+        {
+            if ($apiOrderAllRecords->isEmpty())
+            {
+                return response($this->handleResponse('not_found'), 404);
+            }
+            else
+            {
+                return response($this->handleResponse('success', $apiOrderAllRecords), 200);
+            }
+        }
+        else
+        {
+            return response($this->handleResponse('error_message'), 500);
+        }
+    }
+
+    /**
+     * Filter all the records from the database.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function handleFilterTableColumn($request)
+    {
+        $filterTableColumnPayload = [
+            'column_name'  => $request->get('column_name'),
+            'filter_value' => $request->get('filter_value')
+        ];
+        $apiFilterAllRecords = $this->modelName->filterTableColumn($filterTableColumnPayload);
+
+        if ($apiFilterAllRecords instanceof Collection)
+        {
+            if ($apiFilterAllRecords->isEmpty())
+            {
+                return response($this->handleResponse('not_found'), 404);
+            }
+            else
+            {
+                return response($this->handleResponse('success', $apiFilterAllRecords), 200);
+            }
+        }
+        else
+        {
+            return response($this->handleResponse('error_message'), 500);
+        }
+    }
 }

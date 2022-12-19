@@ -26,4 +26,24 @@ class UserRoleTypeController extends Controller
     {
         return $this->userRoleTypeService->handleIndex();
     }
+
+    /**
+     * Order all the records from the database. HTTP request [GET]
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function orderTableColumn(Request $request)
+    {
+        return $this->userRoleTypeService->handleOrderTableColumn($request);
+    }
+
+    /**
+     * Filter all the records from the database. HTTP request [GET]
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function filterTableColumn(Request $request)
+    {
+        return $this->userRoleTypeService->handleFilterTableColumn($request);
+    }
 }

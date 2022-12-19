@@ -229,7 +229,11 @@ Route::group([ 'prefix' => config('app.version') ], function () {
             });
             Route::apiResource('/users', UserController::class)->except('destroy');
             // User role types
-            Route::apiResource('/user-role-type', UserRoleTypeController::class)->only('index');
+            Route::group([ 'prefix' => '/user-role-types' ], function () {
+                Route::get('/order', [UserRoleTypeController::class, 'orderTableColumn']);
+                Route::get('/filter', [UserRoleTypeController::class, 'filterTableColumn']);
+            });
+            Route::apiResource('/user-role-types', UserRoleTypeController::class)->only('index');
         });
     });
 

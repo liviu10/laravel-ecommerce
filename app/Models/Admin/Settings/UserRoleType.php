@@ -87,4 +87,53 @@ class UserRoleType extends Model
             return False;
         }
     }
+
+    /**
+     * SQL query to order records in ascending or descending order.
+     * @param  array  $payload
+     * @return  Collection|Bool
+     */
+    public function orderTableColumn($payload)
+    {
+        try
+        {
+            return $this->select('id', 'user_role_name', 'user_role_description', 'user_role_slug', 'user_role_is_active')
+                        ->orderBy($payload['column_name'], $payload['order_type'])
+                        ->get();
+        }
+        catch (\Illuminate\Database\QueryException $mysqlError)
+        {
+            $this->handleApiLogError($mysqlError);
+            return False;
+        }
+    }
+
+    /**
+     * SQL query to filter the database table.
+     * @param  array  $payload
+     * @return  Collection|Bool
+     */
+    public function filterTableColumn($payload)
+    {
+        try
+        {
+            if ($payload['column_name'] === 'user_role_name')
+            {
+                return $this->select('id', 'user_role_name', 'user_role_description', 'user_role_slug', 'user_role_is_active')
+                            ->where($payload['column_name'], 'LIKE', $payload['filter_value'])
+                            ->get();
+            }
+            else
+            {
+                return $this->select('id', 'user_role_name', 'user_role_description', 'user_role_slug', 'user_role_is_active')
+                            ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')
+                            ->get();
+            }
+        }
+        catch (\Illuminate\Database\QueryException $mysqlError)
+        {
+            $this->handleApiLogError($mysqlError);
+            return False;
+        }
+    }
 }
