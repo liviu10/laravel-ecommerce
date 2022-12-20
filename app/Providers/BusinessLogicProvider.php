@@ -74,6 +74,16 @@ use Illuminate\Support\ServiceProvider;
     use App\BusinessLogic\Interfaces\Admin\Connect\NewsletterSubscriberInterface;
     use App\BusinessLogic\Services\Admin\Connect\NewsletterSubscriberService;
 
+// Import application's documents
+    use App\BusinessLogic\Interfaces\Documents\UserInvoiceInterface;
+    use App\BusinessLogic\Services\Documents\UserInvoiceService;
+    use App\BusinessLogic\Interfaces\Documents\UserReceiptInterface;
+    use App\BusinessLogic\Services\Documents\UserReceiptService;
+    use App\BusinessLogic\Interfaces\Documents\UserShippingNoteInterface;
+    use App\BusinessLogic\Services\Documents\UserShippingNoteService;
+    use App\BusinessLogic\Interfaces\Documents\UserWarrantyInterface;
+    use App\BusinessLogic\Services\Documents\UserWarrantyService;
+
 
 class BusinessLogicProvider extends ServiceProvider
 {
@@ -123,6 +133,12 @@ class BusinessLogicProvider extends ServiceProvider
         $this->app->bind( ContactMeResponseInterface::class, ContactMeResponseService::class );
         $this->app->bind( NewsletterCampaignInterface::class, NewsletterCampaignService::class );
         $this->app->bind( NewsletterSubscriberInterface::class, NewsletterSubscriberService::class );
+
+        // Register application's documents
+        $this->app->bind( UserInvoiceInterface::class, UserInvoiceService::class );
+        $this->app->bind( UserReceiptInterface::class, UserReceiptService::class );
+        $this->app->bind( UserShippingNoteInterface::class, UserShippingNoteService::class );
+        $this->app->bind( UserWarrantyInterface::class, UserWarrantyService::class );
     }
 
     /**

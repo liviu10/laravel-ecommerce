@@ -42,6 +42,12 @@ namespace App\Providers;
     use App\BusinessLogic\Interfaces\Admin\Connect\NewsletterCampaignInterface;
     use App\BusinessLogic\Interfaces\Admin\Connect\NewsletterSubscriberInterface;
 
+// Import application's documents
+    use App\BusinessLogic\Interfaces\Documents\UserInvoiceInterface;
+    use App\BusinessLogic\Interfaces\Documents\UserReceiptInterface;
+    use App\BusinessLogic\Interfaces\Documents\UserShippingNoteInterface;
+    use App\BusinessLogic\Interfaces\Documents\UserWarrantyInterface;
+
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -94,6 +100,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind( ContactMeResponseInterface::class, ContactMeResponseService::class );
         $this->app->bind( NewsletterCampaignInterface::class, NewsletterCampaignService::class );
         $this->app->bind( NewsletterSubscriberInterface::class, NewsletterSubscriberService::class );
+
+        // Register application's documents
+        $this->app->bind( UserInvoiceInterface::class, UserInvoiceService::class );
+        $this->app->bind( UserReceiptInterface::class, UserReceiptService::class );
+        $this->app->bind( UserShippingNoteInterface::class, UserShippingNoteService::class );
+        $this->app->bind( UserWarrantyInterface::class, UserWarrantyService::class );
 
         // Register laravel telescope
         if ($this->app->environment('local')) {

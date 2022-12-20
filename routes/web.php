@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route;   
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+    use App\Http\Controllers\Documents\UserInvoiceController;
+    use App\Http\Controllers\Documents\UserReceiptController;
+    use App\Http\Controllers\Documents\UserShippingNoteController;
+    use App\Http\Controllers\Documents\UserWarrantyController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    Route::group([ 'prefix' => '/documents' ], function () {
+        Route::resource('/invoice', UserInvoiceController::class)->only('show');
+        Route::resource('/receipt', UserReceiptController::class)->only('show');
+        Route::resource('/shipping-note', UserShippingNoteController::class)->only('show');
+        Route::resource('/warranty', UserWarrantyController::class)->only('show');
+    });
