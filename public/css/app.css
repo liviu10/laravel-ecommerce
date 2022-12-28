@@ -1,0 +1,87 @@
+/* Application's SCSS styles */ /* Functions and other utilities */
+.document {
+  margin: 0.625rem 0rem;
+}
+.document__supplier, .document__client, .document__header {
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  user-select: none;
+}
+.document__supplier p, .document__client p, .document__header p {
+  margin-bottom: 0rem;
+}
+.document__supplier p span:first-child, .document__client p span:first-child, .document__header p span:first-child {
+  font-weight: 700;
+}
+.document__header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.document__header p:first-of-type {
+  text-transform: uppercase;
+}
+.document__header p:not(:first-of-type) {
+  font-size: 0.75rem;
+}
+.document__body p {
+  margin-bottom: 0rem;
+  text-align: right;
+}
+.document__body p span {
+  font-size: 0.75rem;
+  font-style: italic;
+  font-weight: 700;
+}
+.document__body p:last-of-type {
+  margin-bottom: 0.5rem;
+}
+.document__body .table {
+  margin: 0.5rem 0rem;
+  user-select: none;
+}
+.document__body .table thead {
+  display: table-row-group;
+}
+.document__body .table thead tr th {
+  border: 0.0625rem solid #000000;
+  padding: 0.25rem;
+  vertical-align: middle;
+}
+.document__body .table thead tr th p {
+  margin-bottom: 0rem;
+  font-size: 0.75rem;
+  text-align: center;
+}
+.document__body .table thead tr:last-of-type th {
+  font-weight: 400;
+}
+.document__body .table tbody tr th, .document__body .table tbody tr td {
+  border: 0.0625rem solid #000000;
+  padding: 0.25rem;
+  font-size: 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+}
+.document__body .table tbody tr td:nth-of-type(2) {
+  width: 50%;
+  text-align: left;
+}
+.document__body .table tfoot {
+  display: table-row-group;
+}
+.document__body .table tfoot tr td {
+  border: 0.0625rem solid #000000;
+  padding: 0rem;
+}
+.document__body .table tfoot tr td p {
+  margin-bottom: 0rem;
+  font-size: 0.75rem;
+  text-align: left;
+}
+.document__body .table tfoot tr td {
+  padding: 0.5rem 0.25rem;
+}
+
+/*# sourceMappingURL=app.css.map */

@@ -1,0 +1,102 @@
+/* Application's SCSS styles */
+
+@import './utilities/rem_convertor';
+
+.document {
+    margin: rem-convertor(10px) 0rem;
+    &__supplier, &__client, &__header {
+        margin-bottom: rem-convertor(8px);
+        font-size: rem-convertor(12px);
+        user-select: none;
+        & p {
+            margin-bottom: 0rem;
+            & span:first-child {
+                font-weight: 700;
+            }
+        }
+    }
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: column;
+        & p:first-of-type {
+            text-transform: uppercase;
+        }
+        & p:not(:first-of-type) {
+            font-size: rem-convertor(12px);
+        }
+    }
+    &__body {
+        & p {
+            margin-bottom: 0rem;
+            text-align: right;
+            & span {
+                font-size: rem-convertor(12px);
+                font-style: italic;
+                font-weight: 700;
+            }
+        }
+        & p:last-of-type {
+            margin-bottom: rem-convertor(8px);
+        }
+        & .table {
+            margin: rem-convertor(8px) 0rem;
+            user-select: none;
+            & thead {
+                display: table-row-group;
+                & tr {
+                    & th {
+                        border: rem-convertor(1px) solid #000000;
+                        padding: rem-convertor(4px);
+                        vertical-align: middle;
+                        & p {
+                            margin-bottom: 0rem;
+                            font-size: rem-convertor(12px);
+                            text-align: center;
+                        }
+                    }
+                }
+                & tr:last-of-type {
+                    & th {
+                        font-weight: 400;
+                    }
+                }
+            }
+            & tbody {
+                & tr {
+                    & th, & td {
+                        border: rem-convertor(1px) solid #000000;
+                        padding: rem-convertor(4px);
+                        font-size: rem-convertor(12px);
+                        text-align: center;
+                        vertical-align: middle;
+                    }
+                    & td:nth-of-type(2) {
+                        width: 50%;
+                        text-align: left;
+                    }
+                }
+            }
+            & tfoot {
+                display: table-row-group;
+                & tr {
+                    & td {
+                        border: rem-convertor(1px) solid #000000;
+                        padding: 0rem;
+                        & p {
+                            margin-bottom: 0rem;
+                            font-size: rem-convertor(12px);
+                            text-align: left;
+                        }
+                    }
+                }
+                & tr {
+                    & td {
+                        padding: rem-convertor(8px) rem-convertor(4px);
+                    }
+                }
+            }
+        }
+    }
+}

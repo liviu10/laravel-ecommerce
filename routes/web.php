@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\Documents\UserWarrantyController;
 
     Route::group([ 'prefix' => '/documents' ], function () {
-        Route::resource('/invoice', UserInvoiceController::class)->only('show');
+        Route::get('/invoice', [UserInvoiceController::class, 'displayUserInvoice']);
         Route::resource('/receipt', UserReceiptController::class)->only('show');
         Route::resource('/shipping-note', UserShippingNoteController::class)->only('show');
         Route::resource('/warranty', UserWarrantyController::class)->only('show');

@@ -251,6 +251,7 @@ class Client extends Model
                 'phone'               => $payload['phone'],
                 'email_address'       => $payload['email_address'],
                 'is_active'           => $payload['is_active'],
+                'user_id'             => 1,
             ]);
 
             return True;

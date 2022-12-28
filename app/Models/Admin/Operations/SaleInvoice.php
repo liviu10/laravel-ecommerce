@@ -270,7 +270,7 @@ class SaleInvoice extends Model
                         'document_type' => function ($query) {
                             $query->select('id', 'code', 'name');
                         },
-                        'client_id' => function ($query) {
+                        'client' => function ($query) {
                             $query->select('id', 'name');
                         },
                         'vat_type' => function ($query) {

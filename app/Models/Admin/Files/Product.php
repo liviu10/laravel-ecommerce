@@ -196,7 +196,8 @@ class Product extends Model
                 'product_type_id'        => $payload['product_type_id'],
                 'sales_price'            => $payload['sales_price'],
                 'sales_price_with_vat'   => $payload['sales_price_with_vat'],
-                'barcode'                => $payload['barcode']
+                'barcode'                => $payload['barcode'],
+                'user_id'                => 1,
             ]);
 
             return True;

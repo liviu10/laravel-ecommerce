@@ -28,12 +28,12 @@ class UserInvoiceController extends Controller
     }
 
     /**
-     * Display the specified resource. HTTP request [GET].
-     * @param  int  $id
+     * Display the user invoice. HTTP request [GET]
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function displayUserInvoice(Request $request)
     {
-        return $this->userInvoiceService->handleShow($id);
+        return $this->userInvoiceService->handleDisplayUserInvoice($request);
     }
 }

@@ -10,9 +10,9 @@ namespace App\BusinessLogic\Interfaces\Documents;
 interface UserInvoiceInterface
 {
     /**
-     * Fetch a single record from the database.
-     * @param int $id
+     * Display the user invoice.
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
-    public function handleShow($id);
+     */ 
+    public function handleDisplayUserInvoice($request);
 }
