@@ -16,7 +16,6 @@ class CountyService implements CountyInterface
     use ApiResponseMessage;
 
     protected $modelName;
-    protected $tableName;
 
     /**
      * Instantiate the variables that will be used to get the model and table name as well as the table's columns.
@@ -25,7 +24,6 @@ class CountyService implements CountyInterface
     public function __construct()
     {
         $this->modelName = new County();
-        $this->tableName = $this->modelName->getTable();
     }
 
     /**

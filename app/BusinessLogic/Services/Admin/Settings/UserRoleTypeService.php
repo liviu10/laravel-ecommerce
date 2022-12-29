@@ -15,7 +15,6 @@ class UserRoleTypeService implements UserRoleTypeInterface
     use ApiResponseMessage;
 
     protected $modelName;
-    protected $tableName;
 
     /**
      * Instantiate the variables that will be used to get the model and table name as well as the table's columns.
@@ -24,7 +23,6 @@ class UserRoleTypeService implements UserRoleTypeInterface
     public function __construct()
     {
         $this->modelName = new UserRoleType();
-        $this->tableName = $this->modelName->getTable();
     }
 
     /**

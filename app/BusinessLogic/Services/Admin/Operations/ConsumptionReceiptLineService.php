@@ -16,7 +16,6 @@ class ConsumptionReceiptLineService implements ConsumptionReceiptLineInterface
     use ApiResponseMessage;
 
     protected $modelName;
-    protected $tableName;
 
     /**
      * Instantiate the variables that will be used to get the model and table name as well as the table's columns.
@@ -25,7 +24,6 @@ class ConsumptionReceiptLineService implements ConsumptionReceiptLineInterface
     public function __construct()
     {
         $this->modelName = new ConsumptionReceiptLine();
-        $this->tableName = $this->modelName->getTable();
     }
 
     /**

@@ -16,7 +16,6 @@ class UserService implements UserInterface
     use ApiResponseMessage;
 
     protected $modelName;
-    protected $tableName;
 
     /**
      * Instantiate the variables that will be used to get the model and table name as well as the table's columns.
@@ -25,7 +24,6 @@ class UserService implements UserInterface
     public function __construct()
     {
         $this->modelName = new User();
-        $this->tableName = $this->modelName->getTable();
     }
 
     /**

@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Collection;
 class UserWarrantyService implements UserWarrantyInterface
 {
     protected $modelName;
-    protected $tableName;
 
     /**
      * Instantiate the variables that will be used to get the model and table name as well as the table's columns.
@@ -21,7 +20,6 @@ class UserWarrantyService implements UserWarrantyInterface
     public function __construct()
     {
         $this->modelName = new ShippingNote();
-        $this->tableName = $this->modelName->getTable();
     }
 
     /**

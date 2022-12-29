@@ -15,7 +15,6 @@ class AccountTypeService implements AccountTypeInterface
     use ApiResponseMessage;
 
     protected $modelName;
-    protected $tableName;
 
     /**
      * Instantiate the variables that will be used to get the model and table name as well as the table's columns.
@@ -24,7 +23,6 @@ class AccountTypeService implements AccountTypeInterface
     public function __construct()
     {
         $this->modelName = new AccountType();
-        $this->tableName = $this->modelName->getTable();
     }
 
     /**

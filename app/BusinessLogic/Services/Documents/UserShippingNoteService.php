@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Collection;
 class UserShippingNoteService implements UserShippingNoteInterface
 {
     protected $modelName;
-    protected $tableName;
 
     /**
      * Instantiate the variables that will be used to get the model and table name as well as the table's columns.
@@ -21,7 +20,6 @@ class UserShippingNoteService implements UserShippingNoteInterface
     public function __construct()
     {
         $this->modelName = new ShippingNote();
-        $this->tableName = $this->modelName->getTable();
     }
 
     /**

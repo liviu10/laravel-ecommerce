@@ -16,7 +16,6 @@ class ListOfEconomicActivitiesService implements ListOfEconomicActivitiesInterfa
     use ApiResponseMessage;
 
     protected $modelName;
-    protected $tableName;
 
     /**
      * Instantiate the variables that will be used to get the model and table name as well as the table's columns.
@@ -25,7 +24,6 @@ class ListOfEconomicActivitiesService implements ListOfEconomicActivitiesInterfa
     public function __construct()
     {
         $this->modelName = new ListOfEconomicActivities();
-        $this->tableName = $this->modelName->getTable();
     }
 
     /**
