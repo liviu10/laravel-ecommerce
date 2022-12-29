@@ -43,6 +43,14 @@ class DocumentTypeSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+            [
+                'id'         => 4,
+                'code'       => 'ORD',
+                'name'       => 'Comanda client',
+                'user_id'    => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
         ];
         DocumentType::insert($records);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
