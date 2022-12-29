@@ -47,7 +47,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'full_name',
+        'first_name',
+        'last_name',
         'nickname',
         'email',
         'password',
@@ -371,7 +373,7 @@ class User extends Authenticatable
     {
         try
         {
-            return $this->select('id', 'name', 'nickname', 'email')->get();
+            return $this->select('id', 'full_name', 'nickname', 'email')->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {
@@ -390,10 +392,12 @@ class User extends Authenticatable
         try
         {
             $this->create([
-                'name'              => $payload['name'],
+                'full_name'         => $payload['full_name'],
+                'first_name'        => $payload['first_name'],
+                'last_name'         => $payload['last_name'],
                 'nickname'          => $payload['nickname'],
                 'email'             => $payload['email'],
-                'password'          => $payload['password'],
+                'password'          => bcrypt($payload['password']),
                 'user_role_type_id' => $payload['user_role_type_id'],
             ]);
 
@@ -442,10 +446,12 @@ class User extends Authenticatable
         try
         {
             $this->find($id)->update([
-                'name'              => $payload['name'],
+                'full_name'         => $payload['full_name'],
+                'first_name'        => $payload['first_name'],
+                'last_name'         => $payload['last_name'],
                 'nickname'          => $payload['nickname'],
                 'email'             => $payload['email'],
-                'password'          => $payload['password'],
+                'password'          => bcrypt($payload['password']),
                 'user_role_type_id' => $payload['user_role_type_id'],
             ]);
     
@@ -467,7 +473,7 @@ class User extends Authenticatable
     {
         try
         {
-            return $this->select('id', 'name', 'nickname', 'email')
+            return $this->select('id', 'full_name', 'nickname', 'email')
                         ->orderBy($payload['column_name'], $payload['order_type'])
                         ->get();
         }
@@ -489,13 +495,13 @@ class User extends Authenticatable
         {
             if ($payload['column_name'] === 'type')
             {
-                return $this->select('id', 'name', 'nickname', 'email')
+                return $this->select('id', 'full_name', 'nickname', 'email')
                             ->where($payload['column_name'], 'LIKE', $payload['filter_value'])
                             ->get();
             }
             else
             {
-                return $this->select('id', 'name', 'nickname', 'email')
+                return $this->select('id', 'full_name', 'nickname', 'email')
                             ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')
                             ->get();
             }

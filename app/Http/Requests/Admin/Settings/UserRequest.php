@@ -24,7 +24,8 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'              => 'required|max:255|regex:/^[A-Za-z]+$/',
+            'first_name'        => 'required|max:255|regex:/^[A-Za-z]+$/',
+            'last_name'         => 'required|max:255|regex:/^[A-Za-z]+$/',
             'nickname'          => 'required|max:255|regex:/^[a-z0-9_]+$/',
             'email'             => 'required|max:255|unique:users',
             'password'          => 'required',
@@ -40,9 +41,12 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'              => 'Field <:attribute> is required!',
-            'name.max'                   => 'Field <:attribute> must not exceed :max characters!',
-            'name.regex'                 => 'Field <:attribute> must contain only capitalize and lower letters with no special characters!',
+            'first_name.required'        => 'Field <:attribute> is required!',
+            'first_name.max'             => 'Field <:attribute> must not exceed :max characters!',
+            'first_name.regex'           => 'Field <:attribute> must contain only capitalize and lower letters with no special characters!',
+            'last_name.required'         => 'Field <:attribute> is required!',
+            'last_name.max'              => 'Field <:attribute> must not exceed :max characters!',
+            'last_name.regex'            => 'Field <:attribute> must contain only capitalize and lower letters with no special characters!',
             'nickname.required'          => 'Field <:attribute> is required!',
             'nickname.max'               => 'Field <:attribute> must not exceed :max characters!',
             'nickname.regex'             => 'Field <:attribute> must contain only lower letters and numbers with no special characters!',

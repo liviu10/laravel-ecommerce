@@ -21,7 +21,9 @@ class UserSeeder extends Seeder
         $records = [
             [
                 'id'                => '1',
-                'name'              => 'Webmaster',
+                'full_name'         => 'User Webmaster',
+                'first_name'        => 'User',
+                'last_name'         => 'Webmaster',
                 'nickname'          => 'webmaster',
                 'email'             => 'webmaster' . config('app.domain_name'),
                 'email_verified_at' => Carbon::now(),
@@ -32,7 +34,9 @@ class UserSeeder extends Seeder
             ],
             [
                 'id'                => '2',
-                'name'              => 'Administrator',
+                'full_name'         => 'User Administrator',
+                'first_name'        => 'User',
+                'last_name'         => 'Administrator',
                 'nickname'          => 'administrator',
                 'email'             => 'administrator' . config('app.domain_name'),
                 'email_verified_at' => Carbon::now(),
@@ -43,7 +47,9 @@ class UserSeeder extends Seeder
             ],
             [
                 'id'                => '3',
-                'name'              => 'Accountant',
+                'full_name'         => 'User Accountant',
+                'first_name'        => 'User',
+                'last_name'         => 'Accountant',
                 'nickname'          => 'accountant',
                 'email'             => 'accountant' . config('app.domain_name'),
                 'email_verified_at' => Carbon::now(),
@@ -54,7 +60,9 @@ class UserSeeder extends Seeder
             ],
             [
                 'id'                => '4',
-                'name'              => 'Sales',
+                'full_name'         => 'User Sales',
+                'first_name'        => 'User',
+                'last_name'         => 'Sales',
                 'nickname'          => 'sales',
                 'email'             => 'sales' . config('app.domain_name'),
                 'email_verified_at' => Carbon::now(),
@@ -65,7 +73,9 @@ class UserSeeder extends Seeder
             ],
             [
                 'id'                => '5',
-                'name'              => 'Client',
+                'full_name'         => 'User Client',
+                'first_name'        => 'User',
+                'last_name'         => 'Client',
                 'nickname'          => 'client',
                 'email'             => 'client' . config('app.domain_name'),
                 'email_verified_at' => Carbon::now(),

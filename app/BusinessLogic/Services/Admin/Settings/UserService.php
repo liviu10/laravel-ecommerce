@@ -61,12 +61,14 @@ class UserService implements UserInterface
     public function handleStore(UserRequest $request)
     {
         $apiInsertRecord = [
-            'name'              => $request->get('name'),
+            'first_name'        => $request->get('first_name'),
+            'last_name'         => $request->get('last_name'),
             'nickname'          => $request->get('nickname'),
             'email'             => $request->get('email'),
             'password'          => $request->get('password'),
             'user_role_type_id' => $request->get('user_role_type_id')
         ];
+        $apiInsertRecord['full_name'] = $request->get('first_name') . ' ' . $request->get('last_name');
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
         if ($saveRecord === true)
@@ -114,12 +116,14 @@ class UserService implements UserInterface
     public function handleUpdate(UserRequest $request, $id)
     {
         $apiUpdateRecord = [
-            'name'              => $request->get('name'),
+            'first_name'        => $request->get('first_name'),
+            'last_name'         => $request->get('last_name'),
             'nickname'          => $request->get('nickname'),
             'email'             => $request->get('email'),
             'password'          => $request->get('password'),
             'user_role_type_id' => $request->get('user_role_type_id')
         ];
+        $apiUpdateRecord['full_name'] = $request->get('first_name') . ' ' . $request->get('last_name');
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 
         if ($updateRecord === true)
