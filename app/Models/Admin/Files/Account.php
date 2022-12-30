@@ -168,7 +168,7 @@ class Account extends Model
                                 $query->select('id', 'code', 'name');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->get();
@@ -221,7 +221,7 @@ class Account extends Model
                                 $query->select('id', 'code', 'name');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->get();
@@ -278,7 +278,7 @@ class Account extends Model
                                 $query->select('id', 'code', 'name');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->get();
@@ -311,7 +311,7 @@ class Account extends Model
                                     $query->select('id', 'code', 'name');
                                 },
                                 'user' => function ($query) {
-                                    $query->select('id', 'name', 'nickname');
+                                    $query->select('id', 'full_name', 'nickname');
                                 }
                             ])
                             ->get();
@@ -328,7 +328,7 @@ class Account extends Model
                                     $query->select('id', 'code', 'name');
                                 },
                                 'user' => function ($query) {
-                                    $query->select('id', 'name', 'nickname');
+                                    $query->select('id', 'full_name', 'nickname');
                                 }
                             ])
                             ->get();
@@ -345,7 +345,7 @@ class Account extends Model
                                     $query->select('id', 'code', 'name');
                                 },
                                 'user' => function ($query) {
-                                    $query->select('id', 'name', 'nickname');
+                                    $query->select('id', 'full_name', 'nickname');
                                 }
                             ])
                             ->get();

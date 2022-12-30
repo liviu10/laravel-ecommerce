@@ -201,7 +201,7 @@ class ShippingNote extends Model
                                 $query->select('id', 'name');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->get();
@@ -278,7 +278,7 @@ class ShippingNote extends Model
                                                             ]);
                                                         },
                                                         'user' => function ($query) {
-                                                            $query->select('id', 'name', 'nickname');
+                                                            $query->select('id', 'full_name', 'nickname');
                                                         }
                                                     ]);
                                         },
@@ -288,7 +288,7 @@ class ShippingNote extends Model
                             $query->select('id', 'name');
                         },
                         'user' => function ($query) {
-                            $query->select('id', 'name', 'nickname');
+                            $query->select('id', 'full_name', 'nickname');
                         }
                     ])
                     ->get();
@@ -424,7 +424,7 @@ class ShippingNote extends Model
                                 $query->select('id', 'name');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->orderBy($payload['column_name'], $payload['order_type'])
@@ -466,7 +466,7 @@ class ShippingNote extends Model
                                 $query->select('id', 'name');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')

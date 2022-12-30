@@ -127,7 +127,7 @@ class Company extends Model
                                 $query->select('id', 'code', 'name');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->withTrashed()
@@ -199,19 +199,19 @@ class Company extends Model
                                         $query->select('id', 'name');
                                     },
                                     'user' => function ($query) {
-                                        $query->select('id', 'name', 'nickname');
+                                        $query->select('id', 'full_name', 'nickname');
                                     }
                                 ]);
                             },
                             'company_settings' => function ($query) {
                                 $query->select('id', 'company_id', 'name', 'user_id')->with([
                                     'user' => function ($query) {
-                                        $query->select('id', 'name', 'nickname');
+                                        $query->select('id', 'full_name', 'nickname');
                                     }
                                 ]);
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->get();
@@ -310,7 +310,7 @@ class Company extends Model
                                 $query->select('id', 'code', 'name');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->withTrashed()
@@ -343,7 +343,7 @@ class Company extends Model
                                 $query->select('id', 'code', 'name');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->withTrashed()

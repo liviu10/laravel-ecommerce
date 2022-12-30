@@ -167,7 +167,7 @@ class Product extends Model
             return $this->select('id', 'code', 'name', 'user_id')
                         ->with([
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->get();
@@ -231,7 +231,7 @@ class Product extends Model
                                 $query->select('id', 'name');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->get();
@@ -285,7 +285,7 @@ class Product extends Model
             return $this->select('id', 'code', 'name', 'user_id')
                         ->with([
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->orderBy($payload['column_name'], $payload['order_type'])
@@ -312,7 +312,7 @@ class Product extends Model
                 return $this->select('id', 'code', 'name', 'user_id')
                             ->with([
                                 'user' => function ($query) {
-                                    $query->select('id', 'name', 'nickname');
+                                    $query->select('id', 'full_name', 'nickname');
                                 }
                             ])
                             ->where($payload['column_name'], 'LIKE', $payload['filter_value'])
@@ -323,7 +323,7 @@ class Product extends Model
                 return $this->select('id', 'code', 'name', 'user_id')
                             ->with([
                                 'user' => function ($query) {
-                                    $query->select('id', 'name', 'nickname');
+                                    $query->select('id', 'full_name', 'nickname');
                                 }
                             ])
                             ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')

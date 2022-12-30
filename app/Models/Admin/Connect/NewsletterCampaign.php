@@ -185,7 +185,7 @@ class NewsletterCampaign extends Model
                             $query->select('id', 'newsletter_campaign_id', 'full_name', 'email_address', 'privacy_policy');
                         },
                         'user' => function ($query) {
-                            $query->select('id', 'name', 'nickname');
+                            $query->select('id', 'full_name', 'nickname');
                         }
                     ])
                     ->where('id', '=', $id)

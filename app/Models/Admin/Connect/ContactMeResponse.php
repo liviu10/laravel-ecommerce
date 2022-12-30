@@ -116,7 +116,7 @@ class ContactMeResponse extends Model
                                 $query->select('id', 'full_name', 'email_address', 'subject');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->withTrashed()
@@ -243,7 +243,7 @@ class ContactMeResponse extends Model
                                 $query->select('id', 'full_name', 'email_address', 'subject');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->orderBy($payload['column_name'], $payload['order_type'])
@@ -272,7 +272,7 @@ class ContactMeResponse extends Model
                                 $query->select('id', 'full_name', 'email_address', 'subject');
                             },
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')

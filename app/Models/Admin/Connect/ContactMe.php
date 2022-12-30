@@ -150,7 +150,7 @@ class ContactMe extends Model
                         'contact_me_responses' => function ($query) {
                             $query->select('id', 'contact_me_id', 'message_response', 'user_id')->with([
                                 'user' => function ($query) {
-                                    $query->select('id', 'name', 'nickname');
+                                    $query->select('id', 'full_name', 'nickname');
                                 }
                             ]);
                         }

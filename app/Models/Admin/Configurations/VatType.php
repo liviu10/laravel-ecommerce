@@ -180,7 +180,7 @@ class VatType extends Model
             return $this->select('*')
                         ->with([
                             'user' => function ($query) {
-                                $query->select('id', 'name', 'nickname');
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->where('id', '=', $id)
