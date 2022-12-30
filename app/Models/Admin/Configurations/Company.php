@@ -120,7 +120,7 @@ class Company extends Model
             return $this->select(
                             'id', 'list_of_economic_activities_id',
                             'name', 'fiscal_code', 'registration_number',
-                            'social_capital'
+                            'social_capital', 'user_id'
                         )
                         ->with([
                             'list_of_economic_activities' => function ($query) {
