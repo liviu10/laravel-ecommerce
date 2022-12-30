@@ -10,6 +10,7 @@ namespace App\Providers;
     use App\BusinessLogic\Interfaces\Admin\Configurations\CompanySettingsInterface;
     use App\BusinessLogic\Interfaces\Admin\Configurations\CountryInterface;
     use App\BusinessLogic\Interfaces\Admin\Configurations\CountyInterface;
+    use App\BusinessLogic\Interfaces\Admin\Configurations\CurrencyCodeInterface;
     use App\BusinessLogic\Interfaces\Admin\Configurations\DocumentTypeInterface;
     use App\BusinessLogic\Interfaces\Admin\Configurations\ListOfEconomicActivitiesInterface;
     use App\BusinessLogic\Interfaces\Admin\Configurations\ProductTypeInterface;
@@ -69,6 +70,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind( CompanySettingsInterface::class, CompanySettingsService::class );
         $this->app->bind( CountryInterface::class, CountryService::class );
         $this->app->bind( CountyInterface::class, CountyService::class );
+        $this->app->bind( CurrencyCodeInterface::class, CurrencyCodeService::class );
         $this->app->bind( DocumentTypeInterface::class, DocumentTypeService::class );
         $this->app->bind( ListOfEconomicActivitiesInterface::class, ListOfEconomicActivitiesService::class );
         $this->app->bind( ProductTypeInterface::class, ProductTypeService::class );

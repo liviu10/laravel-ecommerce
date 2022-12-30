@@ -19,6 +19,8 @@ use Illuminate\Support\ServiceProvider;
     use App\BusinessLogic\Services\Admin\Configurations\CountryService;
     use App\BusinessLogic\Interfaces\Admin\Configurations\CountyInterface;
     use App\BusinessLogic\Services\Admin\Configurations\CountyService;
+    use App\BusinessLogic\Interfaces\Admin\Configurations\CurrencyCodeInterface;
+    use App\BusinessLogic\Services\Admin\Configurations\CurrencyCodeService;
     use App\BusinessLogic\Interfaces\Admin\Configurations\DocumentTypeInterface;
     use App\BusinessLogic\Services\Admin\Configurations\DocumentTypeService;
     use App\BusinessLogic\Interfaces\Admin\Configurations\ListOfEconomicActivitiesInterface;
@@ -102,6 +104,7 @@ class BusinessLogicProvider extends ServiceProvider
         $this->app->bind( CompanySettingsInterface::class, CompanySettingsService::class );
         $this->app->bind( CountryInterface::class, CountryService::class );
         $this->app->bind( CountyInterface::class, CountyService::class );
+        $this->app->bind( CurrencyCodeInterface::class, CurrencyCodeService::class );
         $this->app->bind( DocumentTypeInterface::class, DocumentTypeService::class );
         $this->app->bind( ListOfEconomicActivitiesInterface::class, ListOfEconomicActivitiesService::class );
         $this->app->bind( ProductTypeInterface::class, ProductTypeService::class );

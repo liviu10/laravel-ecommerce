@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\Admin\Configurations\CompanyController;
     use App\Http\Controllers\Admin\Configurations\CompanyDetailsController;
     use App\Http\Controllers\Admin\Configurations\CompanySettingsController;
+    use App\Http\Controllers\Admin\Configurations\CurrencyCodeController;
     use App\Http\Controllers\Admin\Configurations\DocumentTypeController;
     use App\Http\Controllers\Admin\Configurations\ListOfEconomicActivitiesController;
     use App\Http\Controllers\Admin\Configurations\ProductTypeController;
@@ -98,6 +99,12 @@ Route::group([ 'prefix' => config('app.version') ], function () {
             // Company settings
             Route::get('/company-settings/restore/{id}', [CompanySettingsController::class, 'restoreRecord']);
             Route::apiResource('/company-settings', CompanySettingsController::class)->only(['store', 'update', 'destroy']);
+            // Currency codes
+            Route::group([ 'prefix' => '/currency-codes' ], function () {
+                Route::get('/order', [CurrencyCodeController::class, 'orderTableColumn']);
+                Route::get('/filter', [CurrencyCodeController::class, 'filterTableColumn']);
+            });
+            Route::apiResource('/currency-codes', CurrencyCodeController::class);
             // Document types
             Route::group([ 'prefix' => '/document-types' ], function () {
                 Route::get('/order', [DocumentTypeController::class, 'orderTableColumn']);

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use App\Traits\ApiLogError;
 
-class Country extends Model
+class CurrencyCode extends Model
 {
     use HasFactory, ApiLogError;
 
@@ -16,7 +16,7 @@ class Country extends Model
      * 
      * @var string
      */
-    protected $table = 'countries';
+    protected $table = 'currency_codes';
 
     /**
      * The primary key associated with the table.
@@ -38,7 +38,9 @@ class Country extends Model
      * @var string
      */
     protected $fillable = [
+        'country_id',
         'name',
+        'code',
         'user_id'
     ];
 
@@ -54,48 +56,12 @@ class Country extends Model
     ];
 
     /**
-     * Eloquent relationship between countries and counties.
+     * Eloquent relationship between currency codes and countries.
      *
      */
-    public function counties()
+    public function country()
     {
-        return $this->hasMany('App\Models\Admin\Configurations\County');
-    }
-
-    /**
-     * Eloquent relationship between countries and currency codes.
-     *
-     */
-    public function currency_codes()
-    {
-        return $this->hasMany('App\Models\Admin\Configurations\CurrencyCode');
-    }
-
-    /**
-     * Eloquent relationship between countries and company_details.
-     *
-     */
-    public function company_details()
-    {
-        return $this->hasMany('App\Models\Admin\Configurations\CompanyDetails');
-    }
-
-    /**
-     * Eloquent relationship between countries and clients.
-     *
-     */
-    public function clients()
-    {
-        return $this->hasMany('App\Models\Admin\Files\Client');
-    }
-
-    /**
-     * Eloquent relationship between countries and suppliers.
-     *
-     */
-    public function suppliers()
-    {
-        return $this->hasMany('App\Models\Admin\Files\Supplier');
+        return $this->belongsTo('App\Models\Admin\Configurations\Country');
     }
 
     /**
@@ -115,7 +81,13 @@ class Country extends Model
     {
         try
         {
-            return $this->select('id', 'name')->get();
+            return $this->select('id', 'country_id', 'name', 'code')
+                        ->with([
+                            'country' => function ($query) {
+                                $query->select('id', 'name');
+                            }
+                        ])
+                        ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {
@@ -134,7 +106,10 @@ class Country extends Model
         try
         {
             $this->create([
-                'name' => $payload['name'],
+                'country_id' => $payload['country_id'],
+                'name'       => $payload['name'],
+                'code'       => $payload['code'],
+                'user_id'    => 1,
             ]);
 
             return True;
@@ -155,14 +130,14 @@ class Country extends Model
     {
         try
         {
-            return $this->select('id', 'name')
+            return $this->select('*')
                         ->where('id', '=', $id)
                         ->with([
-                            'counties' => function ($query) {
-                                $query->select('id', 'country_id', 'name');
+                            'country' => function ($query) {
+                                $query->select('id', 'name');
                             },
-                            'currencies' => function ($query) {
-                                $query->select('id', 'country_id', 'name', 'code');
+                            'user' => function ($query) {
+                                $query->select('id', 'full_name', 'nickname');
                             }
                         ])
                         ->get();
@@ -185,7 +160,10 @@ class Country extends Model
         try
         {
             $this->find($id)->update([
-                'name' => $payload['name'],
+                'country_id' => $payload['country_id'],
+                'name'       => $payload['name'],
+                'code'       => $payload['code'],
+                'user_id'    => 1,
             ]);
     
             return True;
@@ -226,7 +204,12 @@ class Country extends Model
     {
         try
         {
-            return $this->select('id', 'name')
+            return $this->select('id', 'country_id', 'name', 'code')
+                        ->with([
+                            'country' => function ($query) {
+                                $query->select('id', 'name');
+                            }
+                        ])
                         ->orderBy($payload['column_name'], $payload['order_type'])
                         ->get();
         }
@@ -246,7 +229,12 @@ class Country extends Model
     {
         try
         {
-            return $this->select('id', 'name')
+            return $this->select('id', 'country_id', 'name', 'code')
+                        ->with([
+                            'country' => function ($query) {
+                                $query->select('id', 'name');
+                            }
+                        ])
                         ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')
                         ->get();
         }

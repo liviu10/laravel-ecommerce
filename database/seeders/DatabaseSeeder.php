@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             CompanyDetailsSeeder::class,
             CountrySeeder::class,
             CountySeeder::class,
+            CurrencyCodeSeeder::class,
             DocumentTypeSeeder::class,
             ErrorAndNotificationSeeder::class,
             ListOfEconomicActivitiesSeeder::class,
