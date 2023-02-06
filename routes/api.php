@@ -225,8 +225,8 @@ Route::group([ 'prefix' => config('app.version') ], function () {
             // Accepted domains
             Route::group([ 'prefix' => '/accepted-domains' ], function () {
                 Route::get('/restore/{id}', [AcceptedDomainController::class, 'restoreRecord']);
-                Route::get('/order', [AcceptedDomainController::class, 'orderTableColumn']);
-                Route::get('/filter', [AcceptedDomainController::class, 'filterTableColumn']);
+                Route::get('/order/{columnName?}/{orderType?}', [AcceptedDomainController::class, 'orderTableColumn']);
+                Route::get('/filter/{columnName?}/{columnValue?}', [AcceptedDomainController::class, 'filterTableColumn']);
             });
             Route::apiResource('/accepted-domains', AcceptedDomainController::class);
             // Errors and notifications

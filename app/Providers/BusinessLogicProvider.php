@@ -49,12 +49,20 @@ use Illuminate\Support\ServiceProvider;
     use App\BusinessLogic\Services\Admin\Operations\CashAndBankRegisterService;
     use App\BusinessLogic\Interfaces\Admin\Operations\ConsumptionReceiptInterface;
     use App\BusinessLogic\Services\Admin\Operations\ConsumptionReceiptService;
+    use App\BusinessLogic\Interfaces\Admin\Operations\ConsumptionReceiptLineInterface;
+    use App\BusinessLogic\Services\Admin\Operations\ConsumptionReceiptLineService;
     use App\BusinessLogic\Interfaces\Admin\Operations\InvoiceInterface;
     use App\BusinessLogic\Services\Admin\Operations\InvoiceService;
+    use App\BusinessLogic\Interfaces\Admin\Operations\InvoiceLineInterface;
+    use App\BusinessLogic\Services\Admin\Operations\InvoiceLineService;
     use App\BusinessLogic\Interfaces\Admin\Operations\SaleInvoiceInterface;
     use App\BusinessLogic\Services\Admin\Operations\SaleInvoiceService;
+    use App\BusinessLogic\Interfaces\Admin\Operations\SaleInvoiceLineInterface;
+    use App\BusinessLogic\Services\Admin\Operations\SaleInvoiceLineService;
     use App\BusinessLogic\Interfaces\Admin\Operations\ShippingNoteInterface;
     use App\BusinessLogic\Services\Admin\Operations\ShippingNoteService;
+    use App\BusinessLogic\Interfaces\Admin\Operations\ShippingNoteLineInterface;
+    use App\BusinessLogic\Services\Admin\Operations\ShippingNoteLineService;
 
 // Import application's settings
     use App\BusinessLogic\Interfaces\Admin\Settings\AcceptedDomainInterface;
@@ -121,9 +129,13 @@ class BusinessLogicProvider extends ServiceProvider
         // Register application's operations interfaces and services
         $this->app->bind( CashAndBankRegisterInterface::class, CashAndBankRegisterService::class );
         $this->app->bind( ConsumptionReceiptInterface::class, ConsumptionReceiptService::class );
+        $this->app->bind( ConsumptionReceiptLineInterface::class, ConsumptionReceiptLineService::class );
         $this->app->bind( InvoiceInterface::class, InvoiceService::class );
+        $this->app->bind( InvoiceLineInterface::class, InvoiceLineService::class );
         $this->app->bind( SaleInvoiceInterface::class, SaleInvoiceService::class );
+        $this->app->bind( SaleInvoiceLineInterface::class, SaleInvoiceLineService::class );
         $this->app->bind( ShippingNoteInterface::class, ShippingNoteService::class );
+        $this->app->bind( ShippingNoteLineInterface::class, ShippingNoteLineService::class );
 
         // Register application's settings interfaces and services
         $this->app->bind( AcceptedDomainInterface::class, AcceptedDomainService::class );

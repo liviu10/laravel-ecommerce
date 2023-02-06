@@ -186,8 +186,8 @@ class AcceptedDomainService implements AcceptedDomainInterface
     public function handleOrderTableColumn($request)
     {
         $orderTableColumnPayload = [
-            'column_name' => $request->get('column_name'),
-            'order_type'  => $request->get('order_type')
+            'column_name' => $request->query('column_name'),
+            'order_type'  => $request->query('order_type')
         ];
         $apiOrderAllRecords = $this->modelName->orderTableColumn($orderTableColumnPayload);
 
@@ -215,9 +215,10 @@ class AcceptedDomainService implements AcceptedDomainInterface
      */
     public function handleFilterTableColumn($request)
     {
+        // dd(gettype($request->get('column_name')));
         $filterTableColumnPayload = [
-            'column_name'  => $request->get('column_name'),
-            'filter_value' => $request->get('filter_value')
+            'column_name'  => $request->query('column_name'),
+            'filter_value' => $request->query('filter_value')
         ];
         $apiFilterAllRecords = $this->modelName->filterTableColumn($filterTableColumnPayload);
 
