@@ -19,10 +19,10 @@ trait ApiResponseMessage
         if ($responseType === 'success')
         {
             $responseMessage = [
-                'title'       => __('laravel_accounting.translations.ok_message.title'),
-                'description' => __('laravel_accounting.translations.ok_message.description'),
+                'title'       => __('translations.ok_message.title'),
+                'description' => __('translations.ok_message.description'),
             ];
-            if ($records !== null)
+            if ($records)
             {
                 $responseMessage['records'] = $records;
             }
@@ -30,15 +30,15 @@ trait ApiResponseMessage
         elseif ($responseType === 'not_found')
         {
             $responseMessage = [
-                'title'       => __('laravel_accounting.translations.not_found_message.title'),
-                'description' => __('laravel_accounting.translations.not_found_message.description'),
+                'title'       => __('translations.not_found_message.title'),
+                'description' => __('translations.not_found_message.description'),
             ];
         }
         else
         {
             $responseMessage = [
-                'title'       => __('laravel_accounting.translations.not_ok_message.title'),
-                'description' => __('laravel_accounting.translations.not_ok_message.description'),
+                'title'       => __('translations.not_ok_message.title'),
+                'description' => __('translations.not_ok_message.description'),
             ];
         }
 

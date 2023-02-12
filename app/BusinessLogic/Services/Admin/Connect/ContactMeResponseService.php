@@ -61,7 +61,7 @@ class ContactMeResponseService implements ContactMeResponseInterface
         $apiInsertRecord = [
             'contact_me_id'    => $request->get('contact_me_id'),
             'message_response' => $request->get('message_response'),
-            'user_id'          => $request->get('user_id'),
+            'user_id'          => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -112,7 +112,7 @@ class ContactMeResponseService implements ContactMeResponseInterface
         $apiUpdateRecord = [
             'contact_me_id'    => $request->get('contact_me_id'),
             'message_response' => $request->get('message_response'),
-            'user_id'          => $request->get('user_id'),
+            'user_id'          => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

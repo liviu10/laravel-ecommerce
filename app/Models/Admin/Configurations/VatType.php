@@ -154,9 +154,10 @@ class VatType extends Model
         try
         {
             $this->create([
-                'code'  => $payload['code'],
-                'name'  => $payload['name'],
-                'value' => $payload['value'],
+                'code'    => $payload['code'],
+                'name'    => $payload['name'],
+                'value'   => $payload['value'],
+                'user_id' => $payload['user_id'],
             ]);
 
             return True;
@@ -204,9 +205,10 @@ class VatType extends Model
         try
         {
             $this->find($id)->update([
-                'code'  => $payload['code'],
-                'name'  => $payload['name'],
-                'value' => $payload['value'],
+                'code'    => $payload['code'],
+                'name'    => $payload['name'],
+                'value'   => $payload['value'],
+                'user_id' => $payload['user_id'],
             ]);
     
             return True;

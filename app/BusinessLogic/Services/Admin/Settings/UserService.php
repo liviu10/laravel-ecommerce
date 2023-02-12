@@ -64,7 +64,7 @@ class UserService implements UserInterface
             'nickname'          => $request->get('nickname'),
             'email'             => $request->get('email'),
             'password'          => $request->get('password'),
-            'user_role_type_id' => $request->get('user_role_type_id')
+            'user_role_type_id' => 1
         ];
         $apiInsertRecord['full_name'] = $request->get('first_name') . ' ' . $request->get('last_name');
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
@@ -119,7 +119,7 @@ class UserService implements UserInterface
             'nickname'          => $request->get('nickname'),
             'email'             => $request->get('email'),
             'password'          => $request->get('password'),
-            'user_role_type_id' => $request->get('user_role_type_id')
+            'user_role_type_id' => 1
         ];
         $apiUpdateRecord['full_name'] = $request->get('first_name') . ' ' . $request->get('last_name');
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);

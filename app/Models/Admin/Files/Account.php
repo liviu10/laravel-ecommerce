@@ -194,6 +194,7 @@ class Account extends Model
                 'code'            => $payload['code'],
                 'name'            => $payload['name'],
                 'is_active'       => $payload['is_active'],
+                'user_id'         => $payload['user_id'],
             ]);
 
             return True;
@@ -248,6 +249,7 @@ class Account extends Model
                 'code'            => $payload['code'],
                 'name'            => $payload['name'],
                 'is_active'       => $payload['is_active'],
+                'user_id'         => $payload['user_id'],
             ]);
     
             return True;

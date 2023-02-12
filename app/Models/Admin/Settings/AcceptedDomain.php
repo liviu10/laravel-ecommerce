@@ -73,7 +73,7 @@ class AcceptedDomain extends Model
     {
         try
         {
-            return $this->select('id', 'domain', 'type')->withTrashed()->get();
+            return $this->select('id', 'domain', 'type')->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
         {
@@ -92,8 +92,9 @@ class AcceptedDomain extends Model
         try
         {
             $this->create([
-                'domain' => $payload['domain'],
-                'type'   => $payload['type'],
+                'domain'  => $payload['domain'],
+                'type'    => $payload['type'],
+                'user_id' => $payload['user_id'],
             ]);
 
             return True;
@@ -142,8 +143,9 @@ class AcceptedDomain extends Model
         try
         {
             $this->find($id)->update([
-                'domain' => $payload['domain'],
-                'type'   => $payload['type'],
+                'domain'  => $payload['domain'],
+                'type'    => $payload['type'],
+                'user_id' => $payload['user_id'],
             ]);
     
             return True;
@@ -205,7 +207,6 @@ class AcceptedDomain extends Model
         try
         {
             return $this->select('id', 'domain', 'type')
-                        ->withTrashed()
                         ->orderBy($payload['column_name'], $payload['order_type'])
                         ->get();
         }
@@ -228,14 +229,12 @@ class AcceptedDomain extends Model
             if ($payload['column_name'] === 'type')
             {
                 return $this->select('id', 'domain', 'type')
-                            ->withTrashed()
                             ->where($payload['column_name'], 'LIKE', $payload['filter_value'])
                             ->get();
             }
             else
             {
                 return $this->select('id', 'domain', 'type')
-                            ->withTrashed()
                             ->where($payload['column_name'], 'LIKE', '%' . $payload['filter_value'] . '%')
                             ->get();
             }

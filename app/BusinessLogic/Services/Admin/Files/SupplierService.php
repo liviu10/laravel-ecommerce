@@ -72,6 +72,7 @@ class SupplierService implements SupplierInterface
             'phone'               => $request->get('phone'),
             'email_address'       => $request->get('email_address'),
             'is_active'           => $request->get('is_active'),
+            'user_id'             => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -133,6 +134,7 @@ class SupplierService implements SupplierInterface
             'phone'               => $request->get('phone'),
             'email_address'       => $request->get('email_address'),
             'is_active'           => $request->get('is_active'),
+            'user_id'             => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

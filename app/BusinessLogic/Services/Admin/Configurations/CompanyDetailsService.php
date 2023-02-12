@@ -68,6 +68,7 @@ class CompanyDetailsService implements CompanyDetailsInterface
             'bank_account'  => $request->get('bank_account'),
             'phone'         => $request->get('phone'),
             'email_address' => $request->get('email_address'),
+            'user_id'       => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -99,6 +100,7 @@ class CompanyDetailsService implements CompanyDetailsInterface
             'bank_account'  => $request->get('bank_account'),
             'phone'         => $request->get('phone'),
             'email_address' => $request->get('email_address'),
+            'user_id'       => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

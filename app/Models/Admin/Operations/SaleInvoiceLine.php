@@ -269,6 +269,7 @@ class SaleInvoiceLine extends Model
                 'vat_amount_value'       => $payload['vat_amount_value'],
                 'account_id'             => $payload['account_id'],
                 'unit_net_value'         => $payload['unit_net_value'],
+                'user_id'                => $payload['user_id'],
             ]);
     
             return True;
@@ -322,6 +323,7 @@ class SaleInvoiceLine extends Model
                 'vat_amount_value'       => $payload['vat_amount_value'],
                 'account_id'             => $payload['account_id'],
                 'unit_net_value'         => $payload['unit_net_value'],
+                'user_id'                => $payload['user_id'],
             ]);
     
             return True;

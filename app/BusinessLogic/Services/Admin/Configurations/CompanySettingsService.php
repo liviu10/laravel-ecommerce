@@ -61,6 +61,7 @@ class CompanySettingsService implements CompanySettingsInterface
         $apiInsertRecord = [
             'company_id' => $request->get('company_id'),
             'name'       => $request->get('name'),
+            'user_id'    => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -85,6 +86,7 @@ class CompanySettingsService implements CompanySettingsInterface
         $apiUpdateRecord = [
             'company_id' => $request->get('company_id'),
             'name'       => $request->get('name'),
+            'user_id'    => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

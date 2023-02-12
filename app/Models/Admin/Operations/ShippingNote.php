@@ -313,6 +313,7 @@ class ShippingNote extends Model
                 'vat_type_id'           => $payload['vat_type_id'],
                 'net_value'             => $payload['net_value'],
                 'document_explications' => $payload['document_explications'],
+                'user_id'               => $payload['user_id'],
             ]);
 
             return True;
@@ -344,6 +345,7 @@ class ShippingNote extends Model
                 'vat_type_id'           => $payload['vat_type_id'],
                 'net_value'             => $payload['net_value'],
                 'document_explications' => $payload['document_explications'],
+                'user_id'               => $payload['user_id'],
             ]);
     
             return True;

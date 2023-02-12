@@ -59,8 +59,9 @@ class AcceptedDomainService implements AcceptedDomainInterface
     public function handleStore(AcceptedDomainRequest $request)
     {
         $apiInsertRecord = [
-            'domain' => '.' . $request->get('domain'),
-            'type'   => $request->get('type'),
+            'domain'  => '.' . $request->get('domain'),
+            'type'    => $request->get('type'),
+            'user_id' => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -109,8 +110,9 @@ class AcceptedDomainService implements AcceptedDomainInterface
     public function handleUpdate(AcceptedDomainRequest $request, $id)
     {
         $apiUpdateRecord = [
-            'domain' => '.' . $request->get('domain'),
-            'type'   => $request->get('type'),
+            'domain'  => '.' . $request->get('domain'),
+            'type'    => $request->get('type'),
+            'user_id' => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

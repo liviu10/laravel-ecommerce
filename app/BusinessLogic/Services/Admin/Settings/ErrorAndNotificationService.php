@@ -61,6 +61,7 @@ class ErrorAndNotificationService implements ErrorAndNotificationInterface
         $apiInsertRecord = [
             'notify_code'              => $request->get('notify_code'),
             'notify_short_description' => $request->get('notify_short_description'),
+            'user_id'                  => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -111,6 +112,7 @@ class ErrorAndNotificationService implements ErrorAndNotificationInterface
         $apiUpdateRecord = [
             'notify_code'              => $request->get('notify_code'),
             'notify_short_description' => $request->get('notify_short_description'),
+            'user_id'                  => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

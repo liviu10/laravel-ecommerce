@@ -92,6 +92,7 @@ class ErrorAndNotification extends Model
             $this->create([
                 'notify_code'              => $payload['notify_code'],
                 'notify_short_description' => $payload['notify_short_description'],
+                'user_id'                  => $payload['user_id'],
             ]);
 
             return True;
@@ -141,6 +142,7 @@ class ErrorAndNotification extends Model
             $this->find($id)->update([
                 'notify_code'              => $payload['notify_code'],
                 'notify_short_description' => $payload['notify_short_description'],
+                'user_id'                  => $payload['user_id'],
             ]);
     
             return True;

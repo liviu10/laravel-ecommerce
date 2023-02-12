@@ -61,7 +61,8 @@ class CurrencyCodeService implements CurrencyCodeInterface
         $apiInsertRecord = [
             'country_id' => $request->get('country_id'),
             'name'       => $request->get('name'),
-            'code'       => $request->get('code')
+            'code'       => $request->get('code'),
+            'user_id'    => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -112,7 +113,8 @@ class CurrencyCodeService implements CurrencyCodeInterface
         $apiUpdateRecord = [
             'country_id' => $request->get('country_id'),
             'name'       => $request->get('name'),
-            'code'       => $request->get('code')
+            'code'       => $request->get('code'),
+            'user_id'    => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

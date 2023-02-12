@@ -59,7 +59,8 @@ class ProductTypeService implements ProductTypeInterface
     public function handleStore(ProductTypeRequest $request)
     {
         $apiInsertRecord = [
-            'name' => $request->get('name'),
+            'name'    => $request->get('name'),
+            'user_id' => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -108,7 +109,8 @@ class ProductTypeService implements ProductTypeInterface
     public function handleUpdate(ProductTypeRequest $request, $id)
     {
         $apiUpdateRecord = [
-            'name' => $request->get('name'),
+            'name'    => $request->get('name'),
+            'user_id' => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

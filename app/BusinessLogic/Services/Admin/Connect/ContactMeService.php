@@ -64,6 +64,7 @@ class ContactMeService implements ContactMeInterface
             'subject'        => $request->get('subject'),
             'message'        => $request->get('message'),
             'privacy_policy' => $request->get('privacy_policy'),
+            'user_id'        => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -117,6 +118,7 @@ class ContactMeService implements ContactMeInterface
             'subject'        => $request->get('subject'),
             'message'        => $request->get('message'),
             'privacy_policy' => $request->get('privacy_policy'),
+            'user_id'        => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

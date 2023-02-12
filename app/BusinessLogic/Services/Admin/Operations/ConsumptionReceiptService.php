@@ -68,6 +68,7 @@ class ConsumptionReceiptService implements ConsumptionReceiptInterface
             'vat_type_id'           => $request->get('vat_type_id'),
             'net_value'             => $request->get('net_value'),
             'document_explications' => $request->get('document_explications'),
+            'user_id'               => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -125,6 +126,7 @@ class ConsumptionReceiptService implements ConsumptionReceiptInterface
             'vat_type_id'           => $request->get('vat_type_id'),
             'net_value'             => $request->get('net_value'),
             'document_explications' => $request->get('document_explications'),
+            'user_id'               => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

@@ -59,9 +59,10 @@ class VatTypeService implements VatTypeInterface
     public function handleStore(VatTypeRequest $request)
     {
         $apiInsertRecord = [
-            'code'  => $request->get('code'),
-            'name'  => $request->get('name'),
-            'value' => $request->get('value'),
+            'code'    => $request->get('code'),
+            'name'    => $request->get('name'),
+            'value'   => $request->get('value'),
+            'user_id' => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -110,9 +111,10 @@ class VatTypeService implements VatTypeInterface
     public function handleUpdate(VatTypeRequest $request, $id)
     {
         $apiUpdateRecord = [
-            'code'  => $request->get('code'),
-            'name'  => $request->get('name'),
-            'value' => $request->get('value'),
+            'code'    => $request->get('code'),
+            'name'    => $request->get('name'),
+            'value'   => $request->get('value'),
+            'user_id' => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

@@ -66,7 +66,8 @@ class ProductService implements ProductInterface
             'product_type_id'        => $request->get('product_type_id'),
             'sales_price'            => $request->get('sales_price'),
             'sales_price_with_vat'   => $request->get('sales_price_with_vat'),
-            'barcode'                => $request->get('barcode')
+            'barcode'                => $request->get('barcode'),
+            'user_id'                => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -122,7 +123,8 @@ class ProductService implements ProductInterface
             'product_type_id'        => $request->get('product_type_id'),
             'sales_price'            => $request->get('sales_price'),
             'sales_price_with_vat'   => $request->get('sales_price_with_vat'),
-            'barcode'                => $request->get('barcode')
+            'barcode'                => $request->get('barcode'),
+            'user_id'                => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

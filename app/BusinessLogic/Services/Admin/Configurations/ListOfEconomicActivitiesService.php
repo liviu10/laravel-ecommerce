@@ -59,8 +59,9 @@ class ListOfEconomicActivitiesService implements ListOfEconomicActivitiesInterfa
     public function handleStore(ListOfEconomicActivitiesRequest $request)
     {
         $apiInsertRecord = [
-            'code' => $request->get('code'),
-            'name' => $request->get('name'),
+            'code'    => $request->get('code'),
+            'name'    => $request->get('name'),
+            'user_id' => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -109,8 +110,9 @@ class ListOfEconomicActivitiesService implements ListOfEconomicActivitiesInterfa
     public function handleUpdate(ListOfEconomicActivitiesRequest $request, $id)
     {
         $apiUpdateRecord = [
-            'code' => $request->get('code'),
-            'name' => $request->get('name'),
+            'code'    => $request->get('code'),
+            'name'    => $request->get('name'),
+            'user_id' => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

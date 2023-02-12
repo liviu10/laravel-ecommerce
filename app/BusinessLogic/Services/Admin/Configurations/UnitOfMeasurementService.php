@@ -59,8 +59,9 @@ class UnitOfMeasurementService implements UnitOfMeasurementInterface
     public function handleStore(UnitOfMeasurementRequest $request)
     {
         $apiInsertRecord = [
-            'code' => $request->get('code'),
-            'name' => $request->get('name'),
+            'code'    => $request->get('code'),
+            'name'    => $request->get('name'),
+            'user_id' => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -109,8 +110,9 @@ class UnitOfMeasurementService implements UnitOfMeasurementInterface
     public function handleUpdate(UnitOfMeasurementRequest $request, $id)
     {
         $apiUpdateRecord = [
-            'code' => $request->get('code'),
-            'name' => $request->get('name'),
+            'code'    => $request->get('code'),
+            'name'    => $request->get('name'),
+            'user_id' => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

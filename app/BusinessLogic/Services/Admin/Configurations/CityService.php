@@ -65,6 +65,7 @@ class CityService implements CityInterface
             'longitude'       => $request->get('longitude'),
             'latitude'        => $request->get('latitude'),
             'google_maps_url' => $request->get('google_maps_url'),
+            'user_id'         => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -119,6 +120,7 @@ class CityService implements CityInterface
             'longitude'       => $request->get('longitude'),
             'latitude'        => $request->get('latitude'),
             'google_maps_url' => $request->get('google_maps_url'),
+            'user_id'         => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

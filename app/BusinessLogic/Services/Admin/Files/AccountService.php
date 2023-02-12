@@ -62,7 +62,8 @@ class AccountService implements AccountInterface
             'account_type_id' => $request->get('account_type_id'),
             'code'            => $request->get('code'),
             'name'            => $request->get('name'),
-            'is_active'       => $request->get('is_active')
+            'is_active'       => $request->get('is_active'),
+            'user_id'         => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -114,7 +115,8 @@ class AccountService implements AccountInterface
             'account_type_id' => $request->get('account_type_id'),
             'code'            => $request->get('code'),
             'name'            => $request->get('name'),
-            'is_active'       => $request->get('is_active')
+            'is_active'       => $request->get('is_active'),
+            'user_id'         => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

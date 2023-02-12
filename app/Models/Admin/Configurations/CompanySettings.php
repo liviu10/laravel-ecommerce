@@ -99,6 +99,7 @@ class CompanySettings extends Model
             $this->create([
                 'company_id' => $payload['company_id'],
                 'name'       => $payload['name'],
+                'user_id'    => $payload['user_id'],
             ]);
     
             return True;
@@ -141,6 +142,7 @@ class CompanySettings extends Model
             $this->find($id)->update([
                 'company_id' => $payload['company_id'],
                 'name'       => $payload['name'],
+                'user_id'    => $payload['user_id'],
             ]);
     
             return True;

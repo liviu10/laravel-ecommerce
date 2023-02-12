@@ -183,6 +183,7 @@ class CompanyDetails extends Model
                 'bank_account'  => $payload['bank_account'],
                 'phone'         => $payload['phone'],
                 'email_address' => $payload['email_address'],
+                'user_id'       => $payload['user_id'],
             ]);
     
             return True;
@@ -232,6 +233,7 @@ class CompanyDetails extends Model
                 'bank_account'  => $payload['bank_account'],
                 'phone'         => $payload['phone'],
                 'email_address' => $payload['email_address'],
+                'user_id'       => $payload['user_id'],
             ]);
     
             return True;

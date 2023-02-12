@@ -66,6 +66,7 @@ class CashAndBankRegisterService implements CashAndBankRegisterInterface
             'sum_payed'        => $request->get('sum_payed'),
             'is_cash_register' => $request->get('is_cash_register'),
             'is_bank_register' => $request->get('is_bank_register'),
+            'user_id'          => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -95,6 +96,7 @@ class CashAndBankRegisterService implements CashAndBankRegisterInterface
             'sum_payed'        => $request->get('sum_payed'),
             'is_cash_register' => $request->get('is_cash_register'),
             'is_bank_register' => $request->get('is_bank_register'),
+            'user_id'          => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

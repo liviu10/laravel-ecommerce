@@ -60,7 +60,8 @@ class CountyService implements CountyInterface
     {
         $apiInsertRecord = [
             'country_id' => $request->get('country_id'),
-            'name'       => $request->get('name')
+            'name'       => $request->get('name'),
+            'user_id'    => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -110,7 +111,8 @@ class CountyService implements CountyInterface
     {
         $apiUpdateRecord = [
             'country_id' => $request->get('country_id'),
-            'name'       => $request->get('name')
+            'name'       => $request->get('name'),
+            'user_id'    => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

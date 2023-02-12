@@ -59,9 +59,10 @@ class WarehouseTypeService implements WarehouseTypeInterface
     public function handleStore(WarehouseTypeRequest $request)
     {
         $apiInsertRecord = [
-            'code' => $request->get('code'),
-            'name' => $request->get('name'),
-            'type' => $request->get('type'),
+            'code'    => $request->get('code'),
+            'name'    => $request->get('name'),
+            'type'    => $request->get('type'),
+            'user_id' => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -110,9 +111,10 @@ class WarehouseTypeService implements WarehouseTypeInterface
     public function handleUpdate(WarehouseTypeRequest $request, $id)
     {
         $apiUpdateRecord = [
-            'code' => $request->get('code'),
-            'name' => $request->get('name'),
-            'type' => $request->get('type'),
+            'code'    => $request->get('code'),
+            'name'    => $request->get('name'),
+            'type'    => $request->get('type'),
+            'user_id' => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

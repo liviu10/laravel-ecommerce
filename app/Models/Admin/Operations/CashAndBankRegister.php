@@ -140,6 +140,7 @@ class CashAndBankRegister extends Model
                 'sum_payed'        => $payload['sum_payed'],
                 'is_cash_register' => $payload['is_cash_register'],
                 'is_bank_register' => $payload['is_bank_register'],
+                'user_id'          => $payload['user_id'],
             ]);
 
             return True;
@@ -169,6 +170,7 @@ class CashAndBankRegister extends Model
                 'sum_payed'        => $payload['sum_payed'],
                 'is_cash_register' => $payload['is_cash_register'],
                 'is_bank_register' => $payload['is_bank_register'],
+                'user_id'          => $payload['user_id'],
             ]);
     
             return True;

@@ -109,7 +109,7 @@ class CurrencyCode extends Model
                 'country_id' => $payload['country_id'],
                 'name'       => $payload['name'],
                 'code'       => $payload['code'],
-                'user_id'    => 1,
+                'user_id'    => $payload['user_id'],
             ]);
 
             return True;
@@ -163,7 +163,7 @@ class CurrencyCode extends Model
                 'country_id' => $payload['country_id'],
                 'name'       => $payload['name'],
                 'code'       => $payload['code'],
-                'user_id'    => 1,
+                'user_id'    => $payload['user_id'],
             ]);
     
             return True;

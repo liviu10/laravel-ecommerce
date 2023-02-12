@@ -59,8 +59,9 @@ class DocumentTypeService implements DocumentTypeInterface
     public function handleStore(DocumentTypeRequest $request)
     {
         $apiInsertRecord = [
-            'code' => $request->get('code'),
-            'name' => $request->get('name'),
+            'code'    => $request->get('code'),
+            'name'    => $request->get('name'),
+            'user_id' => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -109,8 +110,9 @@ class DocumentTypeService implements DocumentTypeInterface
     public function handleUpdate(DocumentTypeRequest $request, $id)
     {
         $apiUpdateRecord = [
-            'code' => $request->get('code'),
-            'name' => $request->get('name'),
+            'code'    => $request->get('code'),
+            'name'    => $request->get('name'),
+            'user_id' => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

@@ -183,6 +183,7 @@ class ConsumptionReceiptLine extends Model
                 'vat_type_id'            => $payload['vat_type_id'],
                 'vat_amount_value'       => $payload['vat_amount_value'],
                 'unit_net_value'         => $payload['unit_net_value'],
+                'user_id'                => $payload['user_id'],
             ]);
     
             return True;
@@ -232,6 +233,7 @@ class ConsumptionReceiptLine extends Model
                 'vat_type_id'            => $payload['vat_type_id'],
                 'vat_amount_value'       => $payload['vat_amount_value'],
                 'unit_net_value'         => $payload['unit_net_value'],
+                'user_id'                => $payload['user_id'],
             ]);
     
             return True;

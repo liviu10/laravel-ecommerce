@@ -150,6 +150,7 @@ class County extends Model
             $this->create([
                 'country_id' => $payload['country_id'],
                 'name'       => $payload['name'],
+                'user_id'    => $payload['user_id'],
             ]);
 
             return True;
@@ -199,6 +200,7 @@ class County extends Model
             $this->find($id)->update([
                 'country_id' => $payload['country_id'],
                 'name'       => $payload['name'],
+                'user_id'    => $payload['user_id'],
             ]);
     
             return True;

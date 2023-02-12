@@ -62,7 +62,8 @@ class NewsletterSubscriberService implements NewsletterSubscriberInterface
             'newsletter_campaign_id' => $request->get('newsletter_campaign_id'),
             'full_name'              => $request->get('full_name'),
             'email_address'          => $request->get('email_address'),
-            'privacy_policy'         => $request->get('privacy_policy')
+            'privacy_policy'         => $request->get('privacy_policy'),
+            'user_id'                => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -114,7 +115,8 @@ class NewsletterSubscriberService implements NewsletterSubscriberInterface
             'newsletter_campaign_id' => $request->get('newsletter_campaign_id'),
             'full_name'              => $request->get('full_name'),
             'email_address'          => $request->get('email_address'),
-            'privacy_policy'         => $request->get('privacy_policy')
+            'privacy_policy'         => $request->get('privacy_policy'),
+            'user_id'                => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

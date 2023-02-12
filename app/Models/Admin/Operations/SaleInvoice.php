@@ -242,6 +242,7 @@ class SaleInvoice extends Model
                 'gross_value'        => $payload['gross_value'],
                 'vat_type_id'        => $payload['vat_type_id'],
                 'net_value'          => $payload['net_value'],
+                'user_id'            => $payload['user_id'],
             ]);
 
             return True;
@@ -336,6 +337,7 @@ class SaleInvoice extends Model
                 'gross_value'        => $payload['gross_value'],
                 'vat_type_id'        => $payload['vat_type_id'],
                 'net_value'          => $payload['net_value'],
+                'user_id'            => $payload['user_id'],
             ]);
     
             return True;

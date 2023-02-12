@@ -116,7 +116,8 @@ class ProductType extends Model
         try
         {
             $this->create([
-                'name' => $payload['name'],
+                'name'    => $payload['name'],
+                'user_id' => $payload['user_id'],
             ]);
 
             return True;
@@ -164,7 +165,8 @@ class ProductType extends Model
         try
         {
             $this->find($id)->update([
-                'name' => $payload['name'],
+                'name'    => $payload['name'],
+                'user_id' => $payload['user_id'],
             ]);
     
             return True;

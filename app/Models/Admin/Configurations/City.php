@@ -148,6 +148,7 @@ class City extends Model
                 'longitude'       => $payload['longitude'],
                 'latitude'        => $payload['latitude'],
                 'google_maps_url' => $payload['google_maps_url'],
+                'user_id'         => $payload['user_id'],
             ]);
 
             return True;
@@ -201,6 +202,7 @@ class City extends Model
                 'longitude'       => $payload['longitude'],
                 'latitude'        => $payload['latitude'],
                 'google_maps_url' => $payload['google_maps_url'],
+                'user_id'         => $payload['user_id'],
             ]);
     
             return True;

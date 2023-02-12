@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use Illuminate\Support\Facades\Log;
+
 /**
  *  ApiLogError is a trait the will used by all the model classes.
  */
@@ -18,6 +20,6 @@ trait ApiLogError
             'code'        => $mysqlError->getCode(),
             'description' => $mysqlError->getMessage()
         ];
-        dump($logError);
+        Log::error($logError);
     }
 }

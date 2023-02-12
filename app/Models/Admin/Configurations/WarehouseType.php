@@ -127,9 +127,10 @@ class WarehouseType extends Model
         try
         {
             $this->create([
-                'code' => $payload['code'],
-                'name' => $payload['name'],
-                'type' => $payload['type'],
+                'code'    => $payload['code'],
+                'name'    => $payload['name'],
+                'type'    => $payload['type'],
+                'user_id' => $payload['user_id'],
             ]);
 
             return True;
@@ -177,9 +178,10 @@ class WarehouseType extends Model
         try
         {
             $this->find($id)->update([
-                'code' => $payload['code'],
-                'name' => $payload['name'],
-                'type' => $payload['type'],
+                'code'    => $payload['code'],
+                'name'    => $payload['name'],
+                'type'    => $payload['type'],
+                'user_id' => $payload['user_id'],
             ]);
     
             return True;

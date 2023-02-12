@@ -130,7 +130,6 @@ class Company extends Model
                                 $query->select('id', 'full_name', 'nickname');
                             }
                         ])
-                        ->withTrashed()
                         ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
@@ -155,6 +154,7 @@ class Company extends Model
                 'fiscal_code'                    => $payload['fiscal_code'],
                 'registration_number'            => $payload['registration_number'],
                 'social_capital'                 => $payload['social_capital'],
+                'user_id'                        => $payload['user_id'],
             ]);
 
             return True;
@@ -239,6 +239,7 @@ class Company extends Model
                 'fiscal_code'                    => $payload['fiscal_code'],
                 'registration_number'            => $payload['registration_number'],
                 'social_capital'                 => $payload['social_capital'],
+                'user_id'                        => $payload['user_id'],
             ]);
 
             return True;
@@ -313,7 +314,6 @@ class Company extends Model
                                 $query->select('id', 'full_name', 'nickname');
                             }
                         ])
-                        ->withTrashed()
                         ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)
@@ -346,7 +346,6 @@ class Company extends Model
                                 $query->select('id', 'full_name', 'nickname');
                             }
                         ])
-                        ->withTrashed()
                         ->get();
         }
         catch (\Illuminate\Database\QueryException $mysqlError)

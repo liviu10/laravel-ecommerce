@@ -59,7 +59,8 @@ class CountryService implements CountryInterface
     public function handleStore(CountryRequest $request)
     {
         $apiInsertRecord = [
-            'name' => $request->get('name')
+            'name'    => $request->get('name'),
+            'user_id' => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -108,7 +109,8 @@ class CountryService implements CountryInterface
     public function handleUpdate(CountryRequest $request, $id)
     {
         $apiUpdateRecord = [
-            'name' => $request->get('name')
+            'name'    => $request->get('name'),
+            'user_id' => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

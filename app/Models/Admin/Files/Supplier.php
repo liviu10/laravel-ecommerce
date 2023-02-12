@@ -251,6 +251,7 @@ class Supplier extends Model
                 'phone'               => $payload['phone'],
                 'email_address'       => $payload['email_address'],
                 'is_active'           => $payload['is_active'],
+                'user_id'             => $payload['user_id'],
             ]);
 
             return True;
@@ -323,6 +324,7 @@ class Supplier extends Model
                 'phone'               => $payload['phone'],
                 'email_address'       => $payload['email_address'],
                 'is_active'           => $payload['is_active'],
+                'user_id'             => $payload['user_id'],
             ]);
     
             return True;

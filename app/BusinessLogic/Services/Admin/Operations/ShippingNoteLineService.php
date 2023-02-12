@@ -68,6 +68,7 @@ class ShippingNoteLineService implements ShippingNoteLineInterface
             'vat_type_id'            => $request->get('vat_type_id'),
             'vat_amount_value'       => $request->get('vat_amount_value'),
             'unit_net_value'         => $request->get('unit_net_value'),
+            'user_id'                => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -99,6 +100,7 @@ class ShippingNoteLineService implements ShippingNoteLineInterface
             'vat_type_id'            => $request->get('vat_type_id'),
             'vat_amount_value'       => $request->get('vat_amount_value'),
             'unit_net_value'         => $request->get('unit_net_value'),
+            'user_id'                => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

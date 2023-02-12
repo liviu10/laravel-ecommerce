@@ -64,6 +64,7 @@ class CompanyService implements CompanyInterface
             'fiscal_code'                    => $request->get('fiscal_code'),
             'registration_number'            => $request->get('registration_number'),
             'social_capital'                 => $request->get('social_capital'),
+            'user_id'                        => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -117,6 +118,7 @@ class CompanyService implements CompanyInterface
             'fiscal_code'                    => $request->get('fiscal_code'),
             'registration_number'            => $request->get('registration_number'),
             'social_capital'                 => $request->get('social_capital'),
+            'user_id'                        => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 

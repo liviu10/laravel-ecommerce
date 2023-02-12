@@ -68,7 +68,7 @@ class NewsletterCampaignService implements NewsletterCampaignInterface
             'occur_week'           => $request->get('occur_week'),
             'occur_day'            => $request->get('occur_day'),
             'occur_hour'           => $request->get('occur_hour'),
-            'user_id'              => $request->get('user_id'),
+            'user_id'              => 1,
         ];
         $saveRecord = $this->modelName->createRecord($apiInsertRecord);
 
@@ -126,7 +126,7 @@ class NewsletterCampaignService implements NewsletterCampaignInterface
             'occur_week'           => $request->get('occur_week'),
             'occur_day'            => $request->get('occur_day'),
             'occur_hour'           => $request->get('occur_hour'),
-            'user_id'              => $request->get('user_id'),
+            'user_id'              => 1,
         ];
         $updateRecord = $this->modelName->updateRecord($apiUpdateRecord, $id);
 
