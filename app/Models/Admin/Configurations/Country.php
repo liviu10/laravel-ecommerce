@@ -162,7 +162,7 @@ class Country extends Model
                             'counties' => function ($query) {
                                 $query->select('id', 'country_id', 'name');
                             },
-                            'currencies' => function ($query) {
+                            'currency_codes' => function ($query) {
                                 $query->select('id', 'country_id', 'name', 'code');
                             }
                         ])
